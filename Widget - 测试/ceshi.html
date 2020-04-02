@@ -2,84 +2,100 @@
 <html>
 
 <head>
-    <title>Module Develop</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-    <style type="text/css">
-        html,
-        body {
-            height: 100%
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+  <title>轻音乐</title>
+  <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+  <style type="text/css">
 
-        body {
-            background-color: #fff;
-            margin: 0;
-        }
+  html,body {
+     height: 100%
+ }
 
-        #wrap {
-            height: 100%;
-            position: relative;
-        }
+ body {
+     background-color: #fff;
+     margin: 0;
+ }
 
-        #header {
-            padding-top: 20px;
-            background-color: #5082c2;
-            height: 44px;
-            position: relative;
-        }
+ #wrap {
+     height: 100%;
+     position: relative;
+ }
 
-        #header h1 {
-            font-size: 20px;
-            height: 44px;
-            line-height: 44px;
-            margin: 0em;
-            color: #fff;
-            margin-left: 100px;
-            margin-right: 100px;
-            text-align: center;
-        }
+ #header {
+     padding-top: 20px;
+     background-color: #5082c2;
+     height: 44px;
+     position: relative;
+ }
 
-        #main {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-box-pack: center;
-        }
+ #header h1 {
+     font-size: 20px;
+     height: 44px;
+     line-height: 44px;
+     margin: 0em;
+     color: #fff;
+     margin-left: 100px;
+     margin-right: 100px;
+     text-align: center;
+ }
 
-        a.button {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-box-pack: center;
-            -webkit-box-align: center;
-            height: 32px;
-            margin: 8px;
-            background-color: rgba(240, 240, 240, 1.0);
-            border-color: rgba(220, 220, 220, 1.0);
-            border-width: 2px;
-            border-style: solid;
-        }
+ #main {
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     -webkit-box-pack: center;
+ }
 
-        a.active {
-            background-color: rgba(240, 240, 240, 0.7);
-        }
-    </style>
+ a.button {
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+     -webkit-box-pack: center;
+     -webkit-box-align: center;
+     height: 32px;
+     margin: 8px;
+     background-color: rgba(240, 240, 240, 1.0);
+     border-color: rgba(220, 220, 220, 1.0);
+     border-width: 2px;
+     border-style: solid;
+ }
+
+ a.active {
+     background-color: rgba(240, 240, 240, 0.7);
+ }
+
+      #classify-list {
+          width: 100%;
+          height: 100%;
+          background-color: #ffffff;
+          overflow-x: hidden;
+      }
+      #classify-list .aui-list {
+          overflow-y: scroll;
+      }
+     .aui-list-item-title{
+          font-size: 100%;
+          border:none;
+          background-color: white;
+     }
+  </style>
 </head>
 
 <body>
-    <div id="wrap">
-        <div id="main">
-            <a class="button" tapmode="active" onclick="netplay()">音乐播放</a>
-            <a class="button" tapmode="active" onclick="show()">界面回来</a>
-            <a class="button" tapmode="active" onclick="close()">界面关闭</a>
-            <a class="button" tapmode="active" onclick="stop()">停止播放</a>
-            <a class="button" tapmode="active" onclick="addMusic()">添加单条音乐</a>
-            <a class="button" tapmode="active" onclick="selectMusic()">指定某条音乐播放</a>
-            <a class="button" tapmode="active" onclick="getCurrentPlayer()">获取当前播放音乐信息</a>
-
-            <a class="button" tapmode="active" onclick="musicPlayPause()">播放或者暂停</a>
-            <a class="button" tapmode="active" onclick="musicPrevious()">播放上一曲</a>
-            <a class="button" tapmode="active" onclick="musicNext()">播放下一曲</a>
-        </div>
-    </div>
+  <header class="aui-bar aui-bar-nav" id="aui-header">
+      <a class="aui-btn aui-pull-left" tapmode onclick="window.location.href='frame2_frm.html'">
+          <span class="aui-iconfont aui-icon-left"></span>
+      </a>
+      <div class="aui-title">轻音乐</div>
+  </header>
+		<div class = "music_list">
+		<div>
+          <input class="aui-list-item-title" id="865854699" onclick="play1()" type="button" value="朋友请听好(易烊千玺版)  --易烊千玺">
+		</div>
+		<div>
+          <input class="aui-list-item-title" id="1344038671" onclick="play2()" type="button" value="我们 (Live)   --华晨宇">
+		</div>
+		</div>
 </body>
 <script>
     var demo;
@@ -116,7 +132,7 @@
         });
     }
 
-    function netplay() {
+    function play1() {
         var url = "http://music.163.com/song/media/outer/url?id=1426883824.mp3"
         demo.playMusic({
             musics: [{
@@ -129,7 +145,20 @@
                 downmusicSum: 12,
                 pinglunSum: 45,
                 background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-            }, {
+            }],
+            ttf: "widget://res/UKIJTor.ttf",
+            downmusicBtn: false,
+            fenxiangBtn: true,
+            pinglunBtn: true,
+            nameTextSize: 20,
+            singerTextSize: 16,
+            isShowUi: false
+        }, function(ret, err) {});
+    }
+    function play2() {
+        var url = "http://music.163.com/song/media/outer/url?id=1428605192.mp3"
+        demo.playMusic({
+            musics: [{
                 name: "我们 (Live)",
                 filename: "http://music.163.com/song/media/outer/url?id=1428605192.mp3",
                 singer: "华晨宇",
@@ -139,26 +168,6 @@
                 downmusicSum: 66,
                 pinglunSum: 233,
                 background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-            }, {
-                name: "小苹果3(widget://)",
-                filename: "widget://res/MP3s/cemo111.mp3",
-                singer: "筷子兄弟",
-                icon: "widget://res/Images/1.jpg",
-                other: 3,
-                fenxiangSum: 123,
-                downmusicSum: 889,
-                pinglunSum: 233,
-                background: "#5F9EA0"
-            }, {
-                name: "传奇4(fs://)",
-                filename: "fs://shangxuege.mp3",
-                singer: "王菲",
-                icon: "widget://res/Images/nanquan@2x.jpg",
-                other: 4,
-                fenxiangSum: 123,
-                downmusicSum: 889,
-                pinglunSum: 233,
-                background: "#00FF7F"
             }],
             ttf: "widget://res/UKIJTor.ttf",
             downmusicBtn: false,
