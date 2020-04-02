@@ -156,6 +156,7 @@
     }
 
     function selectMusic3() {
+        netplay();
         demo.selectMusic({
             other:3
         }, function(ret, err) {
@@ -163,7 +164,7 @@
         });
     }
 
-    /*function netplay() {
+    function netplay() {
         var url = "http://music.163.com/song/media/outer/url?id=1426883824.mp3"
         demo.playMusic({
             musics: [{
@@ -205,48 +206,7 @@
             singerTextSize: 16,
             isShowUi: false
         }, function(ret, err) {});
-    }*/
-    var url = "http://music.163.com/song/media/outer/url?id=1426883824.mp3"
-    demo.playMusic({
-        musics: [{
-            name: "朋友请听好(易烊千玺版)",
-            filename: url,
-            singer: "易烊千玺",
-            icon: "http://p1.music.126.net/6F8-Rp8MUvxzrpTjxJiA7A==/109951164764756625.jpg?param=130y130",
-            other: 1,
-            fenxiangSum: 43,
-            downmusicSum: 12,
-            pinglunSum: 45,
-            background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-        }, {
-            name: "我们 (Live)",
-            filename: "http://music.163.com/song/media/outer/url?id=1428605192.mp3",
-            singer: "华晨宇",
-            icon: "http://p2.music.126.net/8CBeG0BF2C0dPiA1FDflGQ==/109951164773621591.jpg?param=130y130",
-            other: 2,
-            fenxiangSum: 43,
-            downmusicSum: 12,
-            pinglunSum: 45,
-            background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-        }, {
-            name: "新世界 (Live)",
-            filename: "http://music.163.com/song/media/outer/url?id=1434057772.mp3",
-            singer: "华晨宇",
-            icon: "http://p1.music.126.net/P11c_X9qdAMT7yXYIMahQw==/109951164840856331.jpg?param=130y130",
-            other: 3,
-            fenxiangSum: 43,
-            downmusicSum: 12,
-            pinglunSum: 45,
-            background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-        }],
-        ttf: "widget://res/UKIJTor.ttf",
-        downmusicBtn: false,
-        fenxiangBtn: true,
-        pinglunBtn: true,
-        nameTextSize: 20,
-        singerTextSize: 16,
-        isShowUi: false
-    })
+    }
 
     function show() {
         demo.showUI();
