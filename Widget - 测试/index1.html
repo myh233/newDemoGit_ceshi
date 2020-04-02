@@ -45,7 +45,7 @@
             -webkit-box-pack: center;
         }
 
-        a.button {
+        /*a.button {
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-box-pack: center;
@@ -56,15 +56,44 @@
             border-color: rgba(220, 220, 220, 1.0);
             border-width: 2px;
             border-style: solid;
-        }
+        }*/
 
-        a.active {
-            background-color: rgba(240, 240, 240, 0.7);
+        .music_list {
+            font-size: 150%;
+        }
+		    .aui-list-item-title{
+      			font-size: 100%;
+      			border:none;
+      			background-color: white;
+		    }
+        #playstop{
+          width: 100px;
+          height:45px;
+          background: url("../image/播放.png") no-repeat;
+          border-style: none;
         }
     </style>
 </head>
 
 <body>
+    <div class = "music_list">
+		  <div>
+          <input class="aui-list-item-title" id="865854699" onclick="selectMusic1()" type="button" value="朋友请听好(易烊千玺版)
+           --易烊千玺">
+		  </div>
+		  <div>
+          <input class="aui-list-item-title" id="1344038671" onclick="selectMusic2()" type="button" value="我们(live)  --华晨宇">
+		  </div>
+		  <div>
+          <input class="aui-list-item-title" id="440073029" onclick="selectMusic3()" type="button" value="新世界(live)  --华晨宇">
+		  </div>
+		</div>
+    <footer class = "foot">
+        <img id = "previous" src="image/上一曲.png" onclick="musicPrevious()">
+        <img id='playstop' src="image/播放.png" onclick="musicPlayPause()">
+        <img id = "next" src="image/下一曲.png" onclick="musicNext()">
+    </footer>
+    <!--
     <div id="wrap">
         <div id="main">
             <a class="button" tapmode="active" onclick="netplay()">音乐播放</a>
@@ -74,14 +103,19 @@
             <a class="button" tapmode="active" onclick="addMusic()">添加单条音乐</a>
             <a class="button" tapmode="active" onclick="selectMusic()">指定某条音乐播放</a>
             <a class="button" tapmode="active" onclick="getCurrentPlayer()">获取当前播放音乐信息</a>
-
             <a class="button" tapmode="active" onclick="musicPlayPause()">播放或者暂停</a>
             <a class="button" tapmode="active" onclick="musicPrevious()">播放上一曲</a>
             <a class="button" tapmode="active" onclick="musicNext()">播放下一曲</a>
+
         </div>
     </div>
+  -->
 </body>
 <script>
+    function ceshi(){
+      alert("你好");
+    }
+
     var demo;
 
     function getCurrentPlayer() {
@@ -108,9 +142,25 @@
         });
     }
 
-    function selectMusic() {
+    function selectMusic1() {
+        demo.selectMusic({
+            other:1
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic2() {
         demo.selectMusic({
             other:2
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic3() {
+        demo.selectMusic({
+            other:3
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
@@ -135,6 +185,16 @@
                 singer: "华晨宇",
                 icon: "http://p2.music.126.net/8CBeG0BF2C0dPiA1FDflGQ==/109951164773621591.jpg?param=130y130",
                 other: 2,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            }, {
+                name: "新世界 (Live)",
+                filename: "http://music.163.com/song/media/outer/url?id=1434057772.mp3",
+                singer: "华晨宇",
+                icon: "http://p1.music.126.net/P11c_X9qdAMT7yXYIMahQw==/109951164840856331.jpg?param=130y130",
+                other: 3,
                 fenxiangSum: 43,
                 downmusicSum: 12,
                 pinglunSum: 45,
