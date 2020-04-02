@@ -140,6 +140,7 @@
     }
 
     function selectMusic1() {
+        netplay();
         demo.selectMusic({
             other:1
         }, function(ret, err) {
@@ -148,6 +149,7 @@
     }
 
     function selectMusic2() {
+        netplay();
         demo.selectMusic({
             other:2
         }, function(ret, err) {
@@ -221,15 +223,18 @@
     }
 
     function musicPrevious() {
+        netplay();
         demo.musicPrevious();
     }
 
 
     function musicPlayPause() {
+        netplay();
         demo.musicPlayPause();
     }
 
     function musicNext() {
+        netplay();
         demo.musicNext();
     }
 
