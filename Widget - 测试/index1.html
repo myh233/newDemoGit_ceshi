@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <style type="text/css">
-        html,
-        body {
+        html,body {
             width:100%;
             height: 100%
         }
@@ -16,7 +15,7 @@
             background-color: #fff;
             margin: 0;
         }
-
+        /*
         #wrap {
             height: 100%;
             position: relative;
@@ -45,7 +44,7 @@
             -webkit-box-orient: vertical;
             -webkit-box-pack: center;
         }
-
+        */
         /*a.button {
             display: -webkit-box;
             -webkit-box-orient: vertical;
@@ -61,26 +60,65 @@
 
         .music_list {
             font-size: 150%;
+            width:100%;
         }
 		    .aui-list-item-title{
       			font-size: 100%;
       			border:none;
       			background-color: white;
 		    }
-        #playstop{
-          width: 100px;
-          height:45px;
-          background: url("../image/播放.png") no-repeat;
-          border-style: none;
+        /*上一曲*/
+        #previous{
+          width:50px;
+          height:50px;
         }
+        /*播放暂停*/
+        #playstop{
+          width:46px;
+          height:46px;
+        }
+        /*下一曲*/
+        #next{
+          width:50px;
+          height:50px;
+        }
+
+        .foot{
+          width:100%;
+          height:55px;
+          border:1px solid;
+          position:fixed;
+          bottom:0;
+        }
+
+        #Ne{
+          float:right;
+          border:1px solid;
+          width:51px;
+          height:51px;
+        }
+
+        #Pl{
+          float:right;
+          border:1px solid;
+          width:51px;
+          height:51px;
+        }
+
+        #Pr{
+          float:right;
+          border:1px solid;
+          width:51px;
+          height:51px;
+		    }
     </style>
 </head>
 
 <body>
     <div class = "music_list">
+      <!--歌单-->
 		  <div>
-          <input class="aui-list-item-title" id="865854699" onclick="selectMusic1()" type="button" value="朋友请听好(易烊千玺版)
-           --易烊千玺">
+          <input class="aui-list-item-title" id="865854699" onclick="selectMusic1()" type="button" value="朋友请听好(易烊千玺版) --易烊千玺">
 		  </div>
 		  <div>
           <input class="aui-list-item-title" id="1344038671" onclick="selectMusic2()" type="button" value="我们(live)  --华晨宇">
@@ -89,12 +127,23 @@
           <input class="aui-list-item-title" id="440073029" onclick="selectMusic3()" type="button" value="新世界(live)  --华晨宇">
 		  </div>
 		</div>
-    <footer class = "foot">
+
+    <!--页脚-->
+    <div class = "foot">
+      <div id="Ne">
+        <img id = "next" src="image/下一曲.png" onclick="musicNext()">
+      </div>
+      <div id="Pl">
+        <img id= "playstop" src="image/播放.png" onclick="musicPlayPause()">
+      </div>
+      <div id="Pr">
         <img id = "previous" src="image/上一曲.png" onclick="musicPrevious()">
-        <img id='playstop' src="image/播放.png" onclick="musicPlayPause()">
-        <img id = "next" src="image/下一曲.png" tapmode onclick="musicNext()">
-        <a class="button" tapmode="active" onclick="show()">界面回来</a>
-    </footer>
+      </div>
+      <div id="interface">
+        <img id = "jiemian" src="image/界面.png" onclick="show()">
+      </div>
+      <!--<a class="button" tapmode="active" onclick="show()">界面回来</a>-->
+    </div>
     <!--
     <div id="wrap">
         <div id="main">
