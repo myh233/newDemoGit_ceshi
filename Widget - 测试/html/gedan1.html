@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Module Develop</title>
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <style type="text/css">
         html,body {
             width:100%;
@@ -17,10 +17,10 @@
             margin: 0;
         }
 
-        .music_list {
+        /*.music_list {
             font-size: 150%;
             width:100%;
-        }
+        }*/
 		    .aui-list-item-title{
       			font-size: 100%;
       			border:none;
@@ -79,6 +79,13 @@
 </head>
 
 <body>
+    <ul class="aui-list aui-list-noborder">
+      <li class="aui-list-item">
+        <div class="aui-list-item-inner">
+          <!--<input class="aui-list-item-title" id="5189652" onclick="selectMusic1()" type="button" value="Menuet D major --Wolfgang Amadeu">-->
+        </div>
+      </li>
+    </ul>
     <div class = "music_list">
       <!--歌单-->
 		  <div>
@@ -92,36 +99,122 @@
 		  </div>
 		</div>
 
-    <!--页脚-->
+    <!--页脚
     <div class = "foot">
       <div id="Ne">
-        <img id = "next" src="image/下一曲.png" onclick="musicNext()">
+        <img id = "next" src="../image/下一曲.png" onclick="musicNext()">
       </div>
       <div id="Pl">
-        <img id= "playstop" src="image/播放.png" onclick="musicPlayPause()">
+        <img id= "playstop" src="../image/播放.png" onclick="musicPlayPause()">
       </div>
       <div id="Pr">
-        <img id = "previous" src="image/上一曲.png" onclick="musicPrevious()">
+        <img id = "previous" src="../image/上一曲.png" onclick="musicPrevious()">
       </div>
       <div id="interface">
-        <img id = "jiemian" src="image/界面.png" onclick="show()">
+        <img id = "jiemian" src="../image/界面.png" onclick="show()">
       </div>
-    </div>
+    </div>-->
 
 </body>
-<script>
-    //动态生成div
-    function creatdiv(){
-        //创建一个div
-    		var div = document.createElement('div');
-    		div.innerHTML = '<img src=' + '"' + '/vtpath/' + data.allPath[i] + '"' + '>'; //设置显示的数据，可以是标签．
-    		div.className = "video-"+(i+1);//设置div的属性，如：class，title，id 等等
+<script type="text/javascript">
+    //获取主页面搜索框传递来的数据
+    var url = location.search;
+    url = unescape(url);
+    var name_or_singer = url.substring(url.lastIndexOf('=')+1, url.length);
+    //动态生成div内容
+    /*function creatediv2(){
+				var html="";
+				for(var i=1;i<=ret.length;i++){
+					html+="<li class=''aui-list-item'><input class='aui-list-item-title' id='455432'"+i+"type='button' value='Menuet D major --Wolfgang Amadeu'></li>";
+					//html+="<div>第"+i+"行div</div>";
+				}
+				document.getElementById('aui-list aui-list-noborder').innerHTML=html;
+		}*/
 
-    		var bo = document.body; //获取body对象.
-    		//动态插入到body中
-    		bo.insertBefore(div, bo.lastChild);
+    //根据歌名搜索
+    function search(){
+       var value = name_or_singer;
+       var query = api.require('query');
+       var model = api.require('model');
+          model.config({
+           appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
+           appId: 'A6036872544676',
+           host: 'https://d.apicloud.com'
+          });
+          query.createQuery(function(ret,err){
+        if(ret && ret.qid){
+         //console.log(ret.qid)
+         query.whereLike({
+           qid:ret.qid,
+           value:value,
+           column:'name'
+         });
+         model.findAll({
+          class: 'music',
+          qid: ret.qid
+         },function(ret,err){
+           if(ret){
+              alert(ret.length);
+              //ret.length  搜索结果条数
+              var html="";
+              for(var n = 0; n<ret.length;n++)
+                {
+                    html += "<li class=''aui-list-item'><input class='aui-list-item-title' id='455432' type='button' value='Menuet D major --Wolfgang Amadeu'></li>";
+                }
+                var div = document.getElementById("aui-list-item-inner").innerHTML=html;
+              //alert(ret[0].name)
+
+              //alert(JSON.stringify( ret ))
+           }else{
+              alert("抱歉，无搜索结果");
+           }
+         });
+        }
+      });
     }
+    window.onload = search;
+    //根据歌手名搜索
+    function search1(){
+       var value = name_or_singer;
+       var query = api.require('query');
+       var model = api.require('model');
+          model.config({
+           appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
+           appId: 'A6036872544676',
+           host: 'https://d.apicloud.com'
+          });
+          query.createQuery(function(ret,err){
+        if(ret && ret.qid){
+         //console.log(ret.qid)
+         query.whereLike({
+           qid:ret.qid,
+           value:value,
+           column:'singer'
+         });
+         model.findAll({
+          class: 'music',
+          qid: ret.qid
+         },function(ret,err){
+           if(ret){
+             //ret.length  搜索结果条数
+             alert(ret.length);
+             var html="";
+             for(var n = 0; n<ret.length;n++)
+               {
+                   html += "<li class=''aui-list-item'><script type='text/javascript'> function selectMusic{netplay()}<input class='aui-list-item-title' id='455432' type='button' value='Menuet D major --Wolfgang Amadeu'></li>";
+               }
+               var div = document.getElementById("aui-list-item-inner").innerHTML=html;
+             //alert(ret[0].name)
 
+             //alert(JSON.stringify( ret ))
+           }else{
+              alert("抱歉无搜索结果");
+           }
+         });
+        }
+      });
+    }
+    //window.onload = search1;
     var demo;
     function getCurrentPlayer() {
         demo.getCurrentPlayer(function(ret, err) {
