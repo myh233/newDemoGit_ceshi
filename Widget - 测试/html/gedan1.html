@@ -17,63 +17,10 @@
             margin: 0;
         }
 
-        /*.music_list {
-            font-size: 150%;
-            width:100%;
-        }*/
 		    .aui-list-item-title{
       			font-size: 100%;
       			border:none;
       			background-color: white;
-		    }
-        /*上一曲*/
-        #previous{
-          width:40px;
-          height:40px;
-        }
-        /*播放暂停*/
-        #playstop{
-          width:36px;
-          height:36px;
-        }
-        /*下一曲*/
-        #next{
-          width:40px;
-          height:40px;
-        }
-        /*界面*/
-        #jiemian{
-          width:40px;
-          heigth:40px;
-        }
-
-        .foot{
-          width:100%;
-          height:45px;
-          border:1px solid;
-          position:fixed;
-          bottom:0;
-        }
-
-        #Ne{
-          float:right;
-          border:1px solid;
-          width:51px;
-          height:51px;
-        }
-
-        #Pl{
-          float:right;
-          border:1px solid;
-          width:51px;
-          height:51px;
-        }
-
-        #Pr{
-          float:right;
-          border:1px solid;
-          width:51px;
-          height:51px;
 		    }
     </style>
 </head>
@@ -98,38 +45,13 @@
           <input class="aui-list-item-title" id="440073029" onclick="selectMusic3()" type="button" value="新世界(live)  --华晨宇">
 		  </div>
 		</div>
-
-    <!--页脚
-    <div class = "foot">
-      <div id="Ne">
-        <img id = "next" src="../image/下一曲.png" onclick="musicNext()">
-      </div>
-      <div id="Pl">
-        <img id= "playstop" src="../image/播放.png" onclick="musicPlayPause()">
-      </div>
-      <div id="Pr">
-        <img id = "previous" src="../image/上一曲.png" onclick="musicPrevious()">
-      </div>
-      <div id="interface">
-        <img id = "jiemian" src="../image/界面.png" onclick="show()">
-      </div>
-    </div>-->
-
 </body>
 <script type="text/javascript">
     //获取主页面搜索框传递来的数据
     var url = location.search;
     url = unescape(url);
     var name_or_singer = url.substring(url.lastIndexOf('=')+1, url.length);
-    //动态生成div内容
-    /*function creatediv2(){
-				var html="";
-				for(var i=1;i<=ret.length;i++){
-					html+="<li class=''aui-list-item'><input class='aui-list-item-title' id='455432'"+i+"type='button' value='Menuet D major --Wolfgang Amadeu'></li>";
-					//html+="<div>第"+i+"行div</div>";
-				}
-				document.getElementById('aui-list aui-list-noborder').innerHTML=html;
-		}*/
+    var demo;
 
     //根据歌名搜索
     function search(){
@@ -196,6 +118,7 @@
           qid: ret.qid
          },function(ret,err){
            if(ret){
+              alert(JSON.stringify( ret ))
              //ret.length  搜索结果条数
              alert(ret.length);
              var html="";
@@ -215,7 +138,7 @@
       });
     }
     //window.onload = search1;
-    var demo;
+
     function getCurrentPlayer() {
         demo.getCurrentPlayer(function(ret, err) {
             alert("getCurrentPlayer|" + JSON.stringify(ret));
@@ -249,6 +172,9 @@
         });
     }
 
+    /*var musics=[
+      {'name':'ret[]'}
+    ]*/
     function netplay() {
         var url = "http://music.163.com/song/media/outer/url?id=1426883824.mp3"
         demo.playMusic({
