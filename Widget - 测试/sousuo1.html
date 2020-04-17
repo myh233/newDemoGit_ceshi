@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
+    <title>个性推荐</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <style type="text/css">
+      #search{
+        position: relative;
+        top:50px;
+      }
+    </style>
+</head>
+<body>
+    <div class="aui-searchbar" id="search">
+        <div class="aui-searchbar-input aui-border-radius">
+            <i class="aui-iconfont aui-icon-search"></i>
+            <input type="search" placeholder="音乐搜索" id="search-input">
+            <div class="aui-searchbar-clear-btn">
+                <i class="aui-iconfont aui-icon-close"></i>
+            </div>
+        </div>
+        <button onclick="jump()">搜索</button>  <!--更换的button-->
+        <!--<div class="button" tapmode onclick="search();search1();">搜索</div>-->
+    </div>
+    <section class="aui-content">
+        <div class="aui-card-list aui-border-t aui-border-b">
+            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
+                <div class="aui-info-item aui-font-size-12">
+                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
+                    <span class="aui-margin-l-5">猜你喜欢</span>
+                </div>
+                <div class="aui-info-item">
+                    <i class="aui-iconfont aui-icon-more"></i>
+                </div>
+            </div>
+            <div class="aui-card-list-content">
+                <img src="../image/l1.png" />
+            </div>
+            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
+                根据你的口味推荐
+            </div>
+        </div>
+        <div class="aui-card-list aui-border-t aui-border-b" onclick="window.location.href='recommend1_frm.html'">
+            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
+                <div class="aui-info-item aui-font-size-12">
+                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
+                    <span class="aui-margin-l-5">古典推荐</span>
+                </div>
+                <div class="aui-info-item">
+                    <i class="aui-iconfont aui-icon-more"></i>
+                </div>
+            </div>
+            <div class="aui-card-list-content">
+                <img src="../image/l2.png" />
+            </div>
+            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
+                古典主义：来一杯高雅的香槟如何？
+            </div>
+        </div>
+        <div class="aui-card-list aui-border-t aui-border-b" onclick="window.location.href='recommend_frm.html'">
+            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
+                <div class="aui-info-item aui-font-size-12">
+                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
+                    <span class="aui-margin-l-5">轻音乐</span>
+                </div>
+                <div class="aui-info-item">
+                    <i class="aui-iconfont aui-icon-more"></i>
+                </div>
+            </div>
+            <div class="aui-card-list-content">
+                <img src="../image/l3.png" />
+            </div>
+            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
+                诙谐小曲给你带来一天的好心情
+            </div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+    //页面跳转
+    function jump(){
+      url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
+      location.href=url;
+    }
+</script>
+</html>

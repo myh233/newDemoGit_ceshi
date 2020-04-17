@@ -41,12 +41,12 @@
       <ul id="aui-list aui-list-noborder">
         <li class="aui-list-item">
           <div class="aui-list-item-inner">
-            <input id="in" type="button" onclick="selectMusic0"/><br>
-            <input id="in" type="button" onclick="selectMusic1"/><br>
-            <input id="in" type="button" onclick="selectMusic2"/><br>
-            <input id="in" type="button" onclick="selectMusic3"/><br>
-            <input id="in" type="button" onclick="selectMusic4"/><br>
-            <input id="in" type="button" onclick="selectMusic5"/><br>
+            <input id="in" type="button" onclick="selectMusic0()"/><br>
+            <input id="in" type="button" onclick="selectMusic1()"/><br>
+            <input id="in" type="button" onclick="selectMusic2()"/><br>
+            <input id="in" type="button" onclick="selectMusic3()"/><br>
+            <input id="in" type="button" onclick="selectMusic4()"/><br>
+            <input id="in" type="button" onclick="selectMusic5()"/><br>
             <!--<input class="aui-list-item-title" id="5189652" onclick="selectMusic1()" type="button" value="Menuet D major --Wolfgang Amadeu">-->
             <button onclick="search()">赋值</button>
           </div>
@@ -56,13 +56,13 @@
     <div class = "music_list">
       <!--歌单-->
 		  <div>
-          <input class="aui-list-item-title" id="865854699" onclick="selectMusic1()" type="button" value="朋友请听好(易烊千玺版) --易烊千玺">
+          <input class="aui-list-item-title" id="865854699" onclick="selectMusic0()" type="button" value="朋友请听好(易烊千玺版) --易烊千玺">
 		  </div>
 		  <div>
-          <input class="aui-list-item-title" id="1344038671" onclick="selectMusic2()" type="button" value="我们(live)  --华晨宇">
+          <input class="aui-list-item-title" id="1344038671" onclick="selectMusic1()" type="button" value="我们(live)  --华晨宇">
 		  </div>
 		  <div>
-          <input class="aui-list-item-title" id="440073029" onclick="selectMusic3()" type="button" value="新世界(live)  --华晨宇">
+          <input class="aui-list-item-title" id="440073029" onclick="selectMusic2()" type="button" value="新世界(live)  --华晨宇">
 		  </div>
 		</div>
 
@@ -73,6 +73,15 @@
     url = unescape(url);
     var name_or_singer = url.substring(url.lastIndexOf('=')+1, url.length);
     var demo;
+    var json = {
+        ttf: "widget://res/UKIJTor.ttf",
+        downmusicBtn: false,
+        fenxiangBtn: true,
+        pinglunBtn: true,
+        nameTextSize: 20,
+        singerTextSize: 16,
+        isShowUi: false
+    }
 
     var inpArr = document.getElementsByTagName('input');
 
@@ -104,6 +113,26 @@
                 for(var i=0;i<ret.length;i++){
                   gedan = ret[i].name+"--"+ret[i].singer;
                   inpArr[i].value=gedan;
+
+                  var arr = [];
+                  var na = "'"+ret[i].name+"'";
+                  var url = "'http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3'"
+                  var ot=i+1;
+                  var si = "'"+ret[i].singer+"'";
+                  var music = {
+                      name:na,
+                      filename:url,
+                      singer:si,
+                      icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                      other: ot,
+                      fenxiangSum: 43,
+                      downmusicSum: 12,
+                      pinglunSum: 45,
+                      background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+                  };
+                  arr.push(music);
+                  json["music"] = arr;
+
                 }
               }else{
                 alert("曲库中没有此歌曲");
@@ -137,19 +166,6 @@
          },function(ret,err){
            if(ret){
              alert(JSON.stringify( ret ))
-             //ret.length  搜索结果条数
-             alert(ret.length);
-             var html="";
-             var div = document.getElementById('aui-list-item-inner');
-             for(var n = 0; n<ret.length;n++)
-               {
-                   div.innerHTML+="<li class='aui-list-item'><input class='aui-list-item-title' id='455432' type='button' value='Menuet D major --Wolfgang Amadeu'></li>";
-                   //html += "<li class=''aui-list-item'><script type='text/javascript'> function selectMusic{netplay()}<input class='aui-list-item-title' id='455432' type='button' value='Menuet D major --Wolfgang Amadeu'></li>";
-               }
-               //var div = document.getElementById("aui-list-item-inner").innerHTML=html;
-             //alert(ret[0].name)
-
-             //alert(JSON.stringify( ret ))
            }else{
               alert("曲库中没有此歌手的歌曲");
            }
@@ -259,46 +275,7 @@
 
     function netplay() {
         var url = "http://music.163.com/song/media/outer/url?id=1426883824.mp3"
-        demo.playMusic({
-            musics: [{
-                name: "朋友请听好(易烊千玺版)",
-                filename: "http://music.163.com/song/media/outer/url?id=1426883824.mp3",
-                singer: "易烊千玺",
-                icon: "http://p1.music.126.net/6F8-Rp8MUvxzrpTjxJiA7A==/109951164764756625.jpg?param=130y130",
-                other: 1,
-                fenxiangSum: 43,
-                downmusicSum: 12,
-                pinglunSum: 45,
-                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-            }, {
-                name: "我们 (Live)",
-                filename: "http://music.163.com/song/media/outer/url?id=1428605192.mp3",
-                singer: "华晨宇",
-                icon: "http://p2.music.126.net/8CBeG0BF2C0dPiA1FDflGQ==/109951164773621591.jpg?param=130y130",
-                other: 2,
-                fenxiangSum: 43,
-                downmusicSum: 12,
-                pinglunSum: 45,
-                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-            }, {
-                name: "新世界 (Live)",
-                filename: "http://music.163.com/song/media/outer/url?id=1434057772.mp3",
-                singer: "华晨宇",
-                icon: "http://p1.music.126.net/P11c_X9qdAMT7yXYIMahQw==/109951164840856331.jpg?param=130y130",
-                other: 3,
-                fenxiangSum: 43,
-                downmusicSum: 12,
-                pinglunSum: 45,
-                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-            }],
-            ttf: "widget://res/UKIJTor.ttf",
-            downmusicBtn: false,
-            fenxiangBtn: true,
-            pinglunBtn: true,
-            nameTextSize: 20,
-            singerTextSize: 16,
-            isShowUi: false
-        }, function(ret, err) {});
+        demo.playMusic(json, function(ret, err) {});
     }
 
     function show() {
