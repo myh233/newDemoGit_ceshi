@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../css/api.css" />-->
     <script type="text/javascript" src="../script/api.js"></script>
     <style type="text/css">
         html,body {
@@ -36,15 +36,21 @@
       }
     </style>
 </head>
-
-<body>\
+<body>
     <div class = 'music_list'>
       <ul id="aui-list aui-list-noborder">
-        <!--<li class="aui-list-item">
+        <li class="aui-list-item">
           <div class="aui-list-item-inner">
-            <input class="aui-list-item-title" id="5189652" onclick="selectMusic1()" type="button" value="Menuet D major --Wolfgang Amadeu">
+            <input id="in" type="button" onclick="selectMusic0"/><br>
+            <input id="in" type="button" onclick="selectMusic1"/><br>
+            <input id="in" type="button" onclick="selectMusic2"/><br>
+            <input id="in" type="button" onclick="selectMusic3"/><br>
+            <input id="in" type="button" onclick="selectMusic4"/><br>
+            <input id="in" type="button" onclick="selectMusic5"/><br>
+            <!--<input class="aui-list-item-title" id="5189652" onclick="selectMusic1()" type="button" value="Menuet D major --Wolfgang Amadeu">-->
+            <button onclick="search()">赋值</button>
           </div>
-        </li>-->
+        </li>
       </ul>
     </div>
     <!--<div class = "music_list">
@@ -59,7 +65,6 @@
           <input class="aui-list-item-title" id="440073029" onclick="selectMusic3()" type="button" value="新世界(live)  --华晨宇">
 		  </div>
 		</div>-->
-    <button onclick="search()">测试</button>
 
     <script type="text/javascript">
         //获取主页面搜索框传递来的数据
@@ -68,47 +73,43 @@
         var name_or_singer = url.substring(url.lastIndexOf('=')+1, url.length);
         var demo;
 
-        //根据歌名搜索
-        function search(){
-           var value = name_or_singer;
-           var query = api.require('query');
-           var model = api.require('model');
-              model.config({
-               appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
-               appId: 'A6036872544676',
-               host: 'https://d.apicloud.com'
-              });
-              query.createQuery(function(ret,err){
-            if(ret && ret.qid){
-             //console.log(ret.qid)
-             query.whereLike({
-               qid:ret.qid,
-               value:value,
-               column:'name'
-             });
-             model.findAll({
-              class: 'music',
-              qid: ret.qid
-             },function(ret,err){
-               if(ret){
-                  alert(JSON.stringify( ret ))
-                  alert(ret.length);
-                  //ret.length  搜索结果条数
-                  var html="";
-    				      for(var i=0;i<ret.length;i++){
-    					        html+="<li class='aui-list-item'><input class='aui-list-item-title' onclick='selectMusic"+i+"()' id='"+ret[i].music_id+ "'type='button' value='"+ret[i].name+" --"+ret[i].singer+"'></li>";
-    					    //html+="<div>第"+i+"行div</div>";
-    				      }
-    				      document.getElementById('aui-list aui-list-noborder').innerHTML=html;
-                  //alert(ret[0].name)
+        var inpArr = document.getElementsByTagName('input');
 
-                  //alert(JSON.stringify( ret ))
-               }else{
-                  alert("抱歉，无搜索结果");
-               }
-             });
-            }
-          });
+        //alert(inpArr);
+        //var buArr = document.getElementByTagName('button');
+
+        function search(){
+            var value=name_or_singer;
+            var query=api.require('query');
+            var model=api.require('model');
+            model.config({
+              appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
+              appId: 'A6036872544676',
+              host: 'https://d.apicloud.com'
+            });
+            query.createQuery(function(ret,err){
+              if(ret && ret.qid){
+                query.whereLike({
+                  qid:ret.qid,
+                  value:value,
+                  column:'name'
+                });
+                model.findAll({
+                 class: 'music',
+                 qid: ret.qid
+                },function(ret,err){
+                  if(ret){
+                    alert(JSON.stringify( ret ));
+                    for(var i=0;i<ret.length;i++){
+                      gedan = ret[i].name+"--"+ret[i].singer;
+                      inpArr[i].value=gedan;
+                    }
+                  }else{
+                    alert(JSON.stringify( err ));
+                  }
+                });
+              }
+            });
         }
         //window.onload = search;
         //根据歌手名搜索
