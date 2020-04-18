@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-    <!--<link rel="stylesheet" type="text/css" href="../css/api.css" />-->
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="../script/api.js"></script>
     <style type="text/css">
         html,body {
@@ -41,12 +41,12 @@
       <ul id="aui-list aui-list-noborder">
         <li class="aui-list-item">
           <div class="aui-list-item-inner">
-            <input id="in" type="button" onclick="selectMusic0()"/><br>
-            <input id="in" type="button" onclick="selectMusic1()"/><br>
-            <input id="in" type="button" onclick="selectMusic2()"/><br>
-            <input id="in" type="button" onclick="selectMusic3()"/><br>
-            <input id="in" type="button" onclick="selectMusic4()"/><br>
-            <input id="in" type="button" onclick="selectMusic5()"/><br>
+            <input id="in1" type="button" onclick="selectMusic0()" style="display:none"/><br>
+            <input id="in2" type="button" onclick="selectMusic1()" style="display:none"/><br>
+            <input id="in3" type="button" onclick="selectMusic2()" style="display:none"/><br>
+            <input id="in4" type="button" onclick="selectMusic3()" style="display:none"/><br>
+            <input id="in5" type="button" onclick="selectMusic4()" style="display:none"/><br>
+            <input id="in6" type="button" onclick="selectMusic5()" style="display:none"/><br>
             <!--<input class="aui-list-item-title" id="5189652" onclick="selectMusic1()" type="button" value="Menuet D major --Wolfgang Amadeu">-->
             <button onclick="search()">赋值</button>
           </div>
@@ -89,6 +89,8 @@
                 for(var i=0;i<ret.length;i++){
                   gedan = ret[i].name+"--"+ret[i].singer;
                   inpArr[i].value=gedan;
+                  id = inpArr[i].id;
+                  $("#"+id+"").show();
 
                   //var arr = [];
                   var na = '"'+ret[i].name+'"';
