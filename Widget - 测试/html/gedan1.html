@@ -53,18 +53,6 @@
         </li>
       </ul>
     </div>
-    <div class = "music_list">
-      <!--歌单-->
-		  <div>
-          <input class="aui-list-item-title" id="865854699" onclick="selectMusic0()" type="button" value="朋友请听好(易烊千玺版) --易烊千玺">
-		  </div>
-		  <div>
-          <input class="aui-list-item-title" id="1344038671" onclick="selectMusic1()" type="button" value="我们(live)  --华晨宇">
-		  </div>
-		  <div>
-          <input class="aui-list-item-title" id="440073029" onclick="selectMusic2()" type="button" value="新世界(live)  --华晨宇">
-		  </div>
-		</div>
 
 </body>
 <script type="text/javascript">
@@ -73,20 +61,8 @@
     url = unescape(url);
     var name_or_singer = url.substring(url.lastIndexOf('=')+1, url.length);
     var demo;
-    var json = {
-        ttf: "widget://res/UKIJTor.ttf",
-        downmusicBtn: false,
-        fenxiangBtn: true,
-        pinglunBtn: true,
-        nameTextSize: 20,
-        singerTextSize: 16,
-        isShowUi: false
-    }
-
     var inpArr = document.getElementsByTagName('input');
 
-    //alert(inpArr);
-    //var buArr = document.getElementByTagName('button');
 
     function search(){
         var value=name_or_singer;
@@ -114,25 +90,13 @@
                   gedan = ret[i].name+"--"+ret[i].singer;
                   inpArr[i].value=gedan;
 
-                  var arr = [];
-                  var na = "'"+ret[i].name+"'";
-                  var url = "'http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3'"
+                  //var arr = [];
+                  var na = '"'+ret[i].name+'"';
+                  var url = '"http://music.163.com/song/media/outer/url?id='+ret[i].music_id+'.mp3"';
+                  alert(url);
                   var ot=i+1;
-                  var si = "'"+ret[i].singer+"'";
-                  var music = {
-                      name:na,
-                      filename:url,
-                      singer:si,
-                      icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
-                      other: ot,
-                      fenxiangSum: 43,
-                      downmusicSum: 12,
-                      pinglunSum: 45,
-                      background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-                  };
-                  arr.push(music);
-                  json["music"] = arr;
-
+                  var si = '"'+ret[i].singer+'"';
+                  addMusic(na,url,si,ot);
                 }
               }else{
                 alert("曲库中没有此歌曲");
@@ -181,101 +145,129 @@
         });
     }
 
+
+    //添加音乐
+    function addMusic(na,fn,ser,oth) {
+       demo.addMusic({
+           data: {
+               name: na,
+               filename: fn,
+               singer: ser,
+               icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+               other: oth,
+               fenxiangSum: 3,
+               downmusicSum: 33,
+               pinglunSum: 44,
+               background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+           }
+       }, function(ret, err) {
+           alert("addMusic|" + JSON.stringify(ret));
+       });
+   }
+
     function selectMusic0() {
-        netplay();
         demo.selectMusic({
             other:1
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic1() {
-        netplay();
         demo.selectMusic({
             other:2
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic2() {
-        netplay();
         demo.selectMusic({
             other:3
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic3() {
-        netplay();
         demo.selectMusic({
             other:4
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic4() {
-        netplay();
         demo.selectMusic({
             other:5
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic5() {
-        netplay();
         demo.selectMusic({
             other:6
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic6() {
-        netplay();
         demo.selectMusic({
             other:7
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic7() {
-        netplay();
         demo.selectMusic({
             other:8
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic8() {
-        netplay();
         demo.selectMusic({
             other:9
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
 
     function selectMusic9() {
-        netplay();
         demo.selectMusic({
             other:10
         }, function(ret, err) {
             alert("selectMusic|" + JSON.stringify(ret));
         });
+        show();
     }
     //url = "http://music.163.com/song/media/outer/url?id="+ret[n].music_id+".mp3"
     //var musics={'name':'ret[n]name','filename':'url','singer':'ret[n].singer','icon':'http://p1.music.126.net/6F8-Rp8MUvxzrpTjxJiA7A==/109951164764756625.jpg?param=130y130','other':n,fenxiangSum: 43,downmusicSum: 12,pinglunSum: 45,background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"}
 
     function netplay() {
-        var url = "http://music.163.com/song/media/outer/url?id=1426883824.mp3"
-        demo.playMusic(json, function(ret, err) {});
+        demo.playMusic({
+            musics: [],
+            ttf: "widget://res/UKIJTor.ttf",
+            downmusicBtn: false,
+            fenxiangBtn: true,
+            pinglunBtn: true,
+            nameTextSize: 20,
+            singerTextSize: 16,
+            isShowUi: false
+        }, function(ret, err) {});
     }
 
     function show() {
