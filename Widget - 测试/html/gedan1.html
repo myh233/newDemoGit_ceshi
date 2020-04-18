@@ -92,10 +92,10 @@
                   $("#"+id+"").show();
 
                   //var arr = [];
-                  var na = '"'+ret[i].name+'"';
+                  var na = ret[i].name;
                   var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
                   var ot=i+1;
-                  var si = '"'+ret[i].singer+'"';
+                  var si = ret[i].singer;
                   addMusic(na,url,si,ot);
                 }
               }else{
