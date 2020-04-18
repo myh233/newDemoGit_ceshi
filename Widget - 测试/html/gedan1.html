@@ -85,7 +85,6 @@
              qid: ret.qid
             },function(ret,err){
               if(ret){
-                alert(JSON.stringify( ret ));
                 for(var i=0;i<ret.length;i++){
                   gedan = ret[i].name+"--"+ret[i].singer;
                   inpArr[i].value=gedan;
@@ -95,7 +94,6 @@
                   //var arr = [];
                   var na = '"'+ret[i].name+'"';
                   var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
-                  alert(url);
                   var ot=i+1;
                   var si = '"'+ret[i].singer+'"';
                   addMusic(na,url,si,ot);
@@ -162,16 +160,12 @@
                pinglunSum: 44,
                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
            }
-       }, function(ret, err) {
-           alert("addMusic|" + JSON.stringify(ret));
        });
    }
 
     function selectMusic0() {
         demo.selectMusic({
             other:1
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
         show();
     }
