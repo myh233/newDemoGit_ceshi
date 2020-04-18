@@ -8,7 +8,7 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="../script/api.js"></script>
     <style type="text/css">
-        html,body {
+    html,body {
             width:100%;
             height: 100%;
         }
@@ -19,41 +19,65 @@
             margin: 0;
         }
 
+        .music_list {
+            font-size: 150%;
+            width:100%;
+        }
 		    .aui-list-item-title{
       			font-size: 100%;
       			border:none;
       			background-color: white;
 		    }
-
-        .music_list {
-            font-size: 100%;
-            width:100%;
-        }
-       .aui-list-item-title{
-         font-size: 100%;
-         border:none;
-         background-color: white;
-      }
     </style>
+
 </head>
-<body>
+<body onload="search()">
     <div class = 'music_list'>
-      <ul id="aui-list aui-list-noborder">
+      <ul class="aui-list aui-list-noborder">
         <li class="aui-list-item">
           <div class="aui-list-item-inner">
-            <input id="in1" type="button" onclick="selectMusic0()" style="display:none"/><br>
-            <input id="in2" type="button" onclick="selectMusic1()" style="display:none"/><br>
-            <input id="in3" type="button" onclick="selectMusic2()" style="display:none"/><br>
-            <input id="in4" type="button" onclick="selectMusic3()" style="display:none"/><br>
-            <input id="in5" type="button" onclick="selectMusic4()" style="display:none"/><br>
-            <input id="in6" type="button" onclick="selectMusic5()" style="display:none"/><br>
-            <!--<input class="aui-list-item-title" id="5189652" onclick="selectMusic1()" type="button" value="Menuet D major --Wolfgang Amadeu">-->
-            <button onclick="search()">赋值</button>
+            <input class="aui-list-item-title" id="in1" type="button" onclick="selectMusic0()" style="display:none"/>
+          </div>
+        </li>
+      </ul>
+      <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+            <input class="aui-list-item-title" id="in2" type="button" onclick="selectMusic1()" style="display:none"/>
+          </div>
+        </li>
+      </ul>
+      <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+            <input class="aui-list-item-title" id="in3" type="button" onclick="selectMusic2()" style="display:none"/>
+          </div>
+        </li>
+      </ul>
+      <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+            <input class="aui-list-item-title" id="in4" type="button" onclick="selectMusic3()" style="display:none"/>
+          </div>
+        </li>
+      </ul>
+      <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+            <input class="aui-list-item-title" id="in5" type="button" onclick="selectMusic4()" style="display:none"/>
+          </div>
+        </li>
+      </ul>
+      <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+            <input class="aui-list-item-title" id="in6" type="button" onclick="selectMusic5()" style="display:none"/>
           </div>
         </li>
       </ul>
     </div>
-
+            <!--<input class="aui-list-item-title" id="5189652" onclick="selectMusic1()" type="button" value="Menuet D major --Wolfgang Amadeu">-->
+    <button onclick="search()">赋值</button>
 </body>
 <script type="text/javascript">
     //获取主页面搜索框传递来的数据
