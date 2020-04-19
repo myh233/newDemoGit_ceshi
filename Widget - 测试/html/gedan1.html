@@ -201,12 +201,13 @@
         var name1 = document.getElementById("in1").value;
 		    name = name1.match(/(\S*)--/)[1];
         //alert(name);
+        //alert(musics[1][0]);
         for(var j=0;j<musics.length;j++){
-          if(name == music[j][0]){
+          if(name == musics[j][0]){
             i = j+1
           }
         }
-        alert(i);
+        //alert(i);
         demo.selectMusic({
             other:i
         });
