@@ -81,8 +81,23 @@
 <script type="text/javascript">
     //获取主页面搜索框传递来的数据
     var url = location.search;
-    url = unescape(url);
-    var name_or_singer = url.substring(url.lastIndexOf('=')+1, url.length);
+    var loc = url.substring(url.lastIndexOf('=')+1, url.length);
+    var music_list = loc.match(/(\S*)--/)[1];  //所有搜索过的歌的数组
+    music_list = music_list.split("-");
+    var music_lists = [];
+
+    for(var i=0;i<music_list.length;i++){
+      var arr = [];
+      arr.push(music[i][0]);
+      arr.push(music[i][2]);
+      arr.push(music[i][4]);
+      arr.push(music[i][6]);
+      music_lists.push(arr);
+    }
+
+    name_or_singer = unescape(loc.match(/--(\S*)/)[1]); //
+
+
     var demo;
     var inpArr = document.getElementsByTagName('input');
 
@@ -116,18 +131,18 @@
                   $("#"+id+"").show();
 
                   //var arr = [];
-                  var na = ret[i].name;
-                  var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
-                  var ot=i+1;
-                  var si = ret[i].singer;
-                  addMusic(na,url,si,ot);
+                  //var na = ret[i].name;
+                  //var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
+                  //var ot=i+1;
+                  //var si = ret[i].singer;
+                  //addMusic(na,url,si,ot);
 
-                  var music = [];
-                  music.push(na);
-                  music.push(url);
-                  music.push(si);
-                  music.push(ot);
-                  musics.push(music);
+                  //var music = [];
+                  //music.push(na);
+                  //music.push(url);
+                  //music.push(si);
+                  //music.push(ot);
+                  //musics.push(music);
                 }
               }else{
                 alert("曲库中没有此歌曲");
@@ -202,12 +217,12 @@
 		    name = name1.match(/(\S*)--/)[1];
         //alert(name);
         //alert(musics[1][0]);
-        for(var j=0;j<musics.length;j++){
+        for(var j=0;j<music_lists.length;j++){
           if(name == musics[j][0]){
-            i = j+2;
+            i = j+1;
           }
         }
-        alert(i);
+        //alert(i);
         demo.selectMusic({
             other:i
         });
@@ -218,9 +233,9 @@
       var i = 0;
       var name1 = document.getElementById("in2").value;
       name = name1.match(/(\S*)--/)[1];
-      for(var j=0;j<musics.length;j++){
+      for(var j=0;j<music_lists.length;j++){
         if(name = musics[j][0]){
-          i = j+3;
+          i = j+1;
         }
       }
       demo.selectMusic({

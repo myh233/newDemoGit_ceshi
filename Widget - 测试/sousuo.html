@@ -25,66 +25,83 @@
         <button onclick="jump()">搜索</button>  <!--更换的button-->
         <!--<div class="button" tapmode onclick="search();search1();">搜索</div>-->
     </div>
-    <section class="aui-content">
-        <div class="aui-card-list aui-border-t aui-border-b">
-            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
-                <div class="aui-info-item aui-font-size-12">
-                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
-                    <span class="aui-margin-l-5">猜你喜欢</span>
-                </div>
-                <div class="aui-info-item">
-                    <i class="aui-iconfont aui-icon-more"></i>
-                </div>
-            </div>
-            <div class="aui-card-list-content">
-                <img src="../image/l1.png" />
-            </div>
-            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
-                根据你的口味推荐
-            </div>
-        </div>
-        <div class="aui-card-list aui-border-t aui-border-b" onclick="window.location.href='recommend1_frm.html'">
-            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
-                <div class="aui-info-item aui-font-size-12">
-                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
-                    <span class="aui-margin-l-5">古典推荐</span>
-                </div>
-                <div class="aui-info-item">
-                    <i class="aui-iconfont aui-icon-more"></i>
-                </div>
-            </div>
-            <div class="aui-card-list-content">
-                <img src="../image/l2.png" />
-            </div>
-            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
-                古典主义：来一杯高雅的香槟如何？
-            </div>
-        </div>
-        <div class="aui-card-list aui-border-t aui-border-b" onclick="window.location.href='recommend_frm.html'">
-            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
-                <div class="aui-info-item aui-font-size-12">
-                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
-                    <span class="aui-margin-l-5">轻音乐</span>
-                </div>
-                <div class="aui-info-item">
-                    <i class="aui-iconfont aui-icon-more"></i>
-                </div>
-            </div>
-            <div class="aui-card-list-content">
-                <img src="../image/l3.png" />
-            </div>
-            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
-                诙谐小曲给你带来一天的好心情
-            </div>
-        </div>
-    </section>
 </body>
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
     //页面跳转
+    var musics = [];
+
     function jump(){
-      url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
+      search();
+      p = musics.join("-");
+      url = "./html/gedan1.html?name="+p+"--"+escape(document.getElementById('search-input').value);
       location.href=url;
     }
+
+    function search(){
+        var value=name_or_singer;
+        var query=api.require('query');
+        var model=api.require('model');
+        model.config({
+          appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
+          appId: 'A6036872544676',
+          host: 'https://d.apicloud.com'
+        });
+        query.createQuery(function(ret,err){
+          if(ret && ret.qid){
+            query.whereLike({
+              qid:ret.qid,
+              value:value,
+              column:'name'
+            });
+            model.findAll({
+             class: 'music',
+             qid: ret.qid
+            },function(ret,err){
+              if(ret){
+                for(var i=0;i<ret.length;i++){
+                  //gedan = ret[i].name+"--"+ret[i].singer;
+                  //inpArr[i].value=gedan;
+                  //id = inpArr[i].id;
+                  //$("#"+id+"").show();
+
+                  //var arr = [];
+                  var na = ret[i].name;
+                  var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
+                  var ot=i+1;
+                  var si = ret[i].singer;
+                  addMusic(na,url,si,ot);
+
+                  //var music = [];
+                  //music.push(na);
+                  //music.push(url);
+                  //music.push(si);
+                  //music.push(ot);
+                  //musics.push(music);
+                }
+              }else{
+                alert("曲库中没有此歌曲");
+              }
+            });
+          }
+        });
+    }
+
+    //添加音乐
+    function addMusic(na,fn,ser,oth) {
+       demo.addMusic({
+           data: {
+               name: na,
+               filename: fn,
+               singer: ser,
+               icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+               other: oth,
+               fenxiangSum: 3,
+               downmusicSum: 33,
+               pinglunSum: 44,
+               background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+           }
+       });
+   }
 </script>
 </html>
