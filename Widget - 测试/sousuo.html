@@ -29,7 +29,6 @@
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
     //页面跳转
-    var musics = [];
 
     function jump(){
       search();
@@ -39,7 +38,7 @@
     }
 
     function search(){
-        var value=name_or_singer;
+        var value=document.getElementById('search-input').value;
         var query=api.require('query');
         var model=api.require('model');
         model.config({
