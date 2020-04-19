@@ -82,6 +82,10 @@
     //获取主页面搜索框传递来的数据
     var url = location.search;
     var loc = url.substring(url.lastIndexOf('=')+1, url.length);
+
+    name_or_singer = unescape(loc.match(/--(\S*)/)[1]); //
+    alert(name_or_singer);
+
     var music_list = loc.match(/(\S*)--/)[1];  //所有搜索过的歌的数组
     music_list = music_list.split("-");
     var music_lists = [];
@@ -95,8 +99,7 @@
       music_lists.push(arr);
     }
 
-    name_or_singer = unescape(loc.match(/--(\S*)/)[1]); //
-    alert(name_or_singer);
+
 
     var demo;
     var inpArr = document.getElementsByTagName('input');
