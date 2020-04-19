@@ -86,6 +86,8 @@
     var demo;
     var inpArr = document.getElementsByTagName('input');
 
+    var musics=[];
+
     function search(){
         var value=name_or_singer;
         var query=api.require('query');
@@ -118,8 +120,14 @@
                   var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
                   var ot=i+1;
                   var si = ret[i].singer;
-                  addMusic(na,url,si,ot);
-
+                  //addMusic(na,url,si,ot);
+                  var music = [];
+                  music.push(na);
+                  music.push(url);
+                  music.push(ot);
+                  music.push(si);
+                  alert(music[0]);
+                  musics.push(music);
                 }
               }else{
                 alert("曲库中没有此歌曲");
@@ -198,7 +206,6 @@
             other:1
         });
         show();
-        myrefresh();
     }
 
     function selectMusic1() {
