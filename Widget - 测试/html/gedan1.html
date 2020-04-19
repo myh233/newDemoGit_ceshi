@@ -86,9 +86,6 @@
     var demo;
     var inpArr = document.getElementsByTagName('input');
 
-    var musics=[];
-    //var i = 0;  //记录搜索产生的歌曲数
-
     function search(){
         var value=name_or_singer;
         var query=api.require('query');
@@ -119,16 +116,9 @@
                   //var arr = [];
                   var na = ret[i].name;
                   var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
+                  var ot=i+2;
                   var si = ret[i].singer;
-                  var ot=i+1;
-
                   addMusic(na,url,si,ot);
-                  var music = [];
-                  music.push(na);
-                  music.push(url);
-                  music.push(ot);
-                  music.push(si);
-                  musics.push(music);
 
                 }
               }else{
@@ -173,11 +163,6 @@
     }
     //window.onload = search1;
 
-    //页面自动刷新函数
-    //function myrefresh()
-    //{
-       //window.location.reload();
-    //}
 
     function getCurrentPlayer() {
         demo.getCurrentPlayer(function(ret, err) {
@@ -187,7 +172,7 @@
 
 
     //添加音乐
-    function {
+    function addMusic(na,fn,ser,oth) {
        demo.addMusic({
            data: {
                name: na,
@@ -204,57 +189,17 @@
    }
 
     function selectMusic0() {
-        var i = 0;
-        var name1 = document.getElementById("in1").value;
-        name = name1.match(/(\S*)--/)[1];
-        for(var j=0;j<musics.length;j++){
-          if(name = musics[j][0]){
-            i = j;
-          }
-        }
-        i = i + 1;
         demo.selectMusic({
-            other:i
+            other:1
         });
         show();
     }
 
     function selectMusic1() {
-      var i = 0;
-      var name1 = document.getElementById("in2").value;
-      name = name1.match(/(\S*)--/)[1];
-      for(var j=0;j<musics.length;j++){
-        if(name = musics[j][0]){
-          i = j;
-        }
-      }
-      i = i + 1;
-      demo.selectMusic({
-          other:i
-      });
-      show();
-        /*var i = 1
-        demo.playMusic({
-            musics: [{
-                name: musics[i][0],
-                filename: musics[i][1],
-                singer: musics[i][2],
-                icon: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg",
-                other:musics[i][3],
-                fenxiangSum: 43,
-                downmusicSum: 12,
-                pinglunSum: 45,
-                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-            }],
-            ttf: "widget://res/UKIJTor.ttf",
-            downmusicBtn: false,
-            fenxiangBtn: true,
-            pinglunBtn: true,
-            nameTextSize: 20,
-            singerTextSize: 16,
-            isShowUi: false
-        }, function(ret, err) {});*/
-
+        demo.selectMusic({
+            other:2
+        });
+        show();
     }
 
     function selectMusic2() {
@@ -317,17 +262,7 @@
 
     function netplay() {
         demo.playMusic({
-            musics: [{
-                name: "小苹果1(http://)",
-                filename: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/619a3762a2be7650c4345c1d7c23575e.mp3",
-                singer: "筷子兄弟",
-                icon: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg",
-                other: 1,
-                fenxiangSum: 43,
-                downmusicSum: 12,
-                pinglunSum: 45,
-                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-            }],
+            musics: [],
             ttf: "widget://res/UKIJTor.ttf",
             downmusicBtn: false,
             fenxiangBtn: true,
