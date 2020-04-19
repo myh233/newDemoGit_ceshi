@@ -29,6 +29,7 @@
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
     //页面跳转
+    var musics= [];
 
     function jump(){
       search();
@@ -71,12 +72,12 @@
                   var si = ret[i].singer;
                   addMusic(na,url,si,ot);
 
-                  //var music = [];
-                  //music.push(na);
-                  //music.push(url);
-                  //music.push(si);
-                  //music.push(ot);
-                  //musics.push(music);
+                  var music = [];
+                  music.push(na);
+                  music.push(url);
+                  music.push(si);
+                  music.push(ot);
+                  musics.push(music);
                 }
               }else{
                 alert("曲库中没有此歌曲");
