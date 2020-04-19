@@ -118,15 +118,15 @@
                   //var arr = [];
                   var na = ret[i].name;
                   var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
-                  var ot=i+1;
                   var si = ret[i].singer;
-                  //addMusic(na,url,si,ot);
+                  var ot=i+1;
+
+                  //
                   var music = [];
                   music.push(na);
                   music.push(url);
                   music.push(ot);
                   music.push(si);
-                  alert(music[0]);
                   musics.push(music);
                 }
               }else{
@@ -202,17 +202,60 @@
    }
 
     function selectMusic0() {
-        demo.selectMusic({
-            other:1
-        });
-        show();
+        //demo.selectMusic({
+            //other:1
+        //});
+        //show();
+        var i = 0
+        demo.playMusic({
+            musics: [{
+                name: musics[i][0],
+                filename: musics[i][1],
+                singer: musics[i][2],
+                icon: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg",
+                other:musics[i][3],
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            }],
+            ttf: "widget://res/UKIJTor.ttf",
+            downmusicBtn: false,
+            fenxiangBtn: true,
+            pinglunBtn: true,
+            nameTextSize: 20,
+            singerTextSize: 16,
+            isShowUi: false
+        }, function(ret, err) {});
     }
 
     function selectMusic1() {
-        demo.selectMusic({
-            other:2
-        });
-        show();
+        //demo.selectMusic({
+            //other:2
+        //});
+        //show();
+
+        var i = 1
+        demo.playMusic({
+            musics: [{
+                name: musics[i][0],
+                filename: musics[i][1],
+                singer: musics[i][2],
+                icon: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg",
+                other:musics[i][3],
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            }],
+            ttf: "widget://res/UKIJTor.ttf",
+            downmusicBtn: false,
+            fenxiangBtn: true,
+            pinglunBtn: true,
+            nameTextSize: 20,
+            singerTextSize: 16,
+            isShowUi: false
+        }, function(ret, err) {});
     }
 
     function selectMusic2() {
@@ -275,7 +318,17 @@
 
     function netplay() {
         demo.playMusic({
-            musics: [],
+            musics: [{
+                name: "小苹果1(http://)",
+                filename: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/619a3762a2be7650c4345c1d7c23575e.mp3",
+                singer: "筷子兄弟",
+                icon: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg",
+                other: 1,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            }],
             ttf: "widget://res/UKIJTor.ttf",
             downmusicBtn: false,
             fenxiangBtn: true,
