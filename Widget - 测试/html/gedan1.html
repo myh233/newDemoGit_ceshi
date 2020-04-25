@@ -221,32 +221,46 @@
         var name1 = document.getElementById("in1").value;
 		    name = name1.match(/(\S*)--/)[1];
         //alert(name);
+        singer = name1.match(/--(\S*)/)[1];
         //alert(musics[1][0]);
+        //alert(music_lists.length);
+        //alert(music_lists[0][0]);
+        //alert(music_lists[0][3]);
         for(var j=0;j<music_lists.length;j++){
-          if(name == musics[j][0]){
+          if(name == music_lists[j][0] && singer == music_lists[j][2]){
             i = j+1;
+            //alert(i);
+            demo.selectMusic({
+                other:i
+            });
+            show();
           }
         }
         //alert(i);
-        demo.selectMusic({
-            other:i
-        });
-        show();
     }
 
     function selectMusic1() {
-      var i = 0;
-      var name1 = document.getElementById("in2").value;
-      name = name1.match(/(\S*)--/)[1];
-      for(var j=0;j<music_lists.length;j++){
-        if(name = musics[j][0]){
-          i = j+1;
+        var i = 0;
+        var name1 = document.getElementById("in2").value;
+		    name = name1.match(/(\S*)--/)[1];
+        //alert(name);
+        singer = name1.match(/--(\S*)/)[1];
+        //alert(musics[1][0]);
+        //alert(music_lists.length);
+        //alert(music_lists[1]);
+        //alert(music_lists[1][0]);
+        //alert(music_lists[1][2]);
+        for(var j=0;j<music_lists.length;j++){
+          if(name == music_lists[j][0] && singer == music_lists[j][2]){
+            i = j+1;
+            //alert(i);
+            demo.selectMusic({
+                other:i
+            });
+            show();
+          }
         }
-      }
-      demo.selectMusic({
-          other:i
-      });
-      show();
+        //alert(i);
     }
 
     function selectMusic2() {
