@@ -88,18 +88,19 @@
 
     var music_list = loc.match(/(\S*)--/)[1];  //所有搜索过的歌的数组
     music_list = music_list.split("-");
+
     var music_lists = [];
 
     for(var i=0;i<music_list.length;i++){
       var arr = [];
-      alert(music[i][0]);
-      alert(music[i][2]);
-      alert(music[i][4]);
-      alert(music[i][6]);
-      arr.push(music[i][0]);
-      arr.push(music[i][2]);
-      arr.push(music[i][4]);
-      arr.push(music[i][6]);
+      alert(music_list[i][0]);
+      alert(music_list[i][2]);
+      alert(music_list[i][4]);
+      alert(music_list[i][6]);
+      arr.push(music_list[i][0]);
+      arr.push(music_list[i][2]);
+      arr.push(music_list[i][4]);
+      arr.push(music_list[i][6]);
       music_lists.push(arr);
     }
 
