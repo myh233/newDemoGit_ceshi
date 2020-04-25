@@ -93,7 +93,11 @@
       //location.href=url;
     }
 
-
+    function getCurrentPlayer() {
+        demo.getCurrentPlayer(function(ret, err) {
+            alert("getCurrentPlayer|" + JSON.stringify(ret));
+        });
+    }
 
     //添加音乐
     function addMusic(na,fn,ser,oth) {
@@ -111,5 +115,35 @@
            }
        });
    }
+
+   function apiready() {
+        demo = api.require('uimusic');
+        demo.addEventListener({
+            name: "closeui"
+        }, function(ret, err) {
+            alert("closeui>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "pinglun"
+        }, function(ret, err) {
+            alert("pinglun>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "fenxiang"
+        }, function(ret, err) {
+            alert("fenxiang>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "downmusic"
+        }, function(ret, err) {
+            alert("downmusic>>addEventListener|" + JSON.stringify(ret));
+        });
+
+        demo.addEventListener({
+            name: "sharetop"
+        }, function(ret, err) {
+            alert("sharetop>>addEventListener|" + JSON.stringify(ret));
+        });
+    }
 </script>
 </html>

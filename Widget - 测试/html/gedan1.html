@@ -90,7 +90,7 @@
     music_list = music_list.split("-");
     alert(music_list.length);
     var music_lists = [];
-    
+
     for(var i=0;i<music_list.length;i++){
       var arr = [];
       alert(music_list[i][0]);
@@ -193,13 +193,6 @@
       });
     }
     //window.onload = search1;
-
-
-    function getCurrentPlayer() {
-        demo.getCurrentPlayer(function(ret, err) {
-            alert("getCurrentPlayer|" + JSON.stringify(ret));
-        });
-    }
 
 
     //添加音乐
