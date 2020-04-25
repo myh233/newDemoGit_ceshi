@@ -31,13 +31,6 @@
     //页面跳转
     var musics= [];
 
-    function jump(){
-      search();
-      p = musics.join("-");
-      url = "./html/gedan1.html?name="+p+"--"+escape(document.getElementById('search-input').value);
-      location.href=url;
-    }
-
     function search(){
         var value=document.getElementById('search-input').value;
         var query=api.require('query');
@@ -86,6 +79,15 @@
           }
         });
     }
+
+    function jump(){
+      search();
+      p = musics.join("-");
+      url = "./html/gedan1.html?name="+p+"--"+escape(document.getElementById('search-input').value);
+      location.href=url;
+    }
+
+
 
     //添加音乐
     function addMusic(na,fn,ser,oth) {
