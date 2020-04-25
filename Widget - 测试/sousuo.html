@@ -82,7 +82,7 @@
                 alert("曲库中没有此歌曲");
               }
               p = musics.join("-");
-              url = "./html/gedan1.html?name="+p+"--"+escape(document.getElementById('search-input').value);
+              url = "./html/gedan1.html?name="+escape(p)+"--"+escape(document.getElementById('search-input').value);
               location.href=url;
             });
           }

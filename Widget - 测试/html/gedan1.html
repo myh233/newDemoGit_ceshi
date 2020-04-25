@@ -81,37 +81,41 @@
 <script type="text/javascript">
     //获取主页面搜索框传递来的数据
     var url = location.search;
-    var loc = url.substring(url.lastIndexOf('=')+1, url.length);
+    //alert(url);
+    //var loc = url.substring(url.IndexOf('=')+1, url.length);
+    var loc = url.split("=")[1];
+    var name_or_singer = unescape(loc.match(/--(\S*)/)[1]); //
 
-    name_or_singer = unescape(loc.match(/--(\S*)/)[1]); //
-    //alert(name_or_singer);
-
-    var music_list = loc.match(/(\S*)--/)[1];  //所有搜索过的歌的数组
+    var music_list = unescape(loc.match(/(\S*)--/)[1]);  //所有搜索过的歌的数组
+    //alert(music_list);
     music_list = music_list.split("-");
+    //alert(music_list[0]);
     //alert(music_list.length);
     var music_lists = [];
 
     for(var i=0;i<music_list.length;i++){
       var arr = [];
-      //alert(music_list[i][0]);
+      //alert(music_list[i]);
+      var m = music_list[i].split(",");
+      //alert(m[0]);
       //alert(music_list[i][2]);
       //alert(music_list[i][4]);
       //alert(music_list[i][6]);
-      arr.push(music_list[i][0]);
-      arr.push(music_list[i][2]);
-      arr.push(music_list[i][4]);
-      arr.push(music_list[i][6]);
+      arr.push(m[0]);
+      arr.push(m[1]);
+      arr.push(m[2]);
+      arr.push(m[3]);
       music_lists.push(arr);
     }
 
-
+    //alert(music_lists[0][0]);
 
     var demo;
     var inpArr = document.getElementsByTagName('input');
 
     //var musics = [] //所有搜索过的音乐
 
-    function search(){
+    function search(){  //用来对div进行赋值
         var value=name_or_singer;
         var query=api.require('query');
         var model=api.require('model');
