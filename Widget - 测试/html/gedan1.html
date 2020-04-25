@@ -84,19 +84,19 @@
     var loc = url.substring(url.lastIndexOf('=')+1, url.length);
 
     name_or_singer = unescape(loc.match(/--(\S*)/)[1]); //
-    alert(name_or_singer);
+    //alert(name_or_singer);
 
     var music_list = loc.match(/(\S*)--/)[1];  //所有搜索过的歌的数组
     music_list = music_list.split("-");
-    alert(music_list.length);
+    //alert(music_list.length);
     var music_lists = [];
 
     for(var i=0;i<music_list.length;i++){
       var arr = [];
-      alert(music_list[i][0]);
-      alert(music_list[i][2]);
-      alert(music_list[i][4]);
-      alert(music_list[i][6]);
+      //alert(music_list[i][0]);
+      //alert(music_list[i][2]);
+      //alert(music_list[i][4]);
+      //alert(music_list[i][6]);
       arr.push(music_list[i][0]);
       arr.push(music_list[i][2]);
       arr.push(music_list[i][4]);

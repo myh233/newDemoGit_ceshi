@@ -22,7 +22,7 @@
                 <i class="aui-iconfont aui-icon-close"></i>
             </div>
         </div>
-        <button onclick="jump()">搜索</button>  <!--更换的button-->
+        <button onclick="search()">搜索</button>  <!--更换的button-->
         <!--<div class="button" tapmode onclick="search();search1();">搜索</div>-->
     </div>
 </body>
@@ -53,8 +53,8 @@
             },function(ret,err){
               if(ret){
                 for(var i=0;i<ret.length;i++){
-                  alert(ret.length)
-                  alert(ret[i].name)
+                  //alert(ret.length);
+                  //alert(ret[i].name)
                   //gedan = ret[i].name+"--"+ret[i].singer;
                   //inpArr[i].value=gedan;
                   //id = inpArr[i].id;
@@ -65,10 +65,10 @@
                   var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
                   var ot=i+1;
                   var si = ret[i].singer;
-                  alert(na);
-                  alert(url);
-                  alert(ot);
-                  alert(si);
+                  //alert(na);
+                  //alert(url);
+                  //alert(ot);
+                  //alert(si);
                   addMusic(na,url,si,ot);
 
                   var music = [];
@@ -81,23 +81,24 @@
               }else{
                 alert("曲库中没有此歌曲");
               }
+              p = musics.join("-");
+              url = "./html/gedan1.html?name="+p+"--"+escape(document.getElementById('search-input').value);
+              location.href=url;
             });
           }
         });
+        //alert(musics[0][0]);
     }
 
     function jump(){
       search();
-      //p = musics.join("-");
-      //url = "./html/gedan1.html?name="+p+"--"+escape(document.getElementById('search-input').value);
-      //location.href=url;
     }
 
-    function getCurrentPlayer() {
+    /*function getCurrentPlayer() {
         demo.getCurrentPlayer(function(ret, err) {
             alert("getCurrentPlayer|" + JSON.stringify(ret));
         });
-    }
+    }*/
 
     //添加音乐
     function addMusic(na,fn,ser,oth) {
