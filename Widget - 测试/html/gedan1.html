@@ -81,7 +81,7 @@
 <script type="text/javascript">
     //获取主页面搜索框传递来的数据
     var url = location.search;
-    alert(url);
+    //alert(url);
     //var loc = url.substring(url.IndexOf('=')+1, url.length);
     var loc = url.substring(url.lastIndexOf('=')+1, url.length);
     var name_or_singer = unescape(loc); //
@@ -218,7 +218,9 @@
 
     function selectMusic0() {
         var name = document.getElementById("in1").value;
-        var i = localStorage.getItem("name");
+        //alert(name);
+        var i = localStorage.getItem(name);
+        //alert(i);
 		    //name = name1.match(/(\S*)--/)[1];
         //alert(name);
         //singer = name1.match(/--(\S*)/)[1];

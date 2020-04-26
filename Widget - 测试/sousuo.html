@@ -22,7 +22,7 @@
                 <i class="aui-iconfont aui-icon-close"></i>
             </div>
         </div>
-        <button onclick="jump()">搜索</button>  <!--更换的button-->
+        <button onclick="search()">搜索</button>  <!--更换的button-->
         <!--<div class="button" tapmode onclick="search();search1();">搜索</div>-->
     </div>
 </body>
@@ -61,8 +61,9 @@
                 //alert(url);
                 //alert(ot);
                 //alert(si);
-                //addMusic(na,url,si,ot);
+                addMusic(na,url,si,ot);
                 var song = na+"--"+si;
+                //alert(song);
                 //alert(song);
                 localStorage.setItem(song,ot);
                 //var music = [];
@@ -77,8 +78,8 @@
               alert("曲库中没有此歌曲");
             }
             //p = musics.join("-");
-            //url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
-            //location.href=url;
+            url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
+            location.href=url;
           });
         }
       });
