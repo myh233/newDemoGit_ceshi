@@ -86,14 +86,14 @@
     var loc = url.split("=")[1];
     var name_or_singer = unescape(loc.match(/--(\S*)/)[1]); //
 
-    var music_list = unescape(loc.match(/(\S*)--/)[1]);  //所有搜索过的歌的数组
+    //var music_list = unescape(loc.match(/(\S*)--/)[1]);  //所有搜索过的歌的数组
     //alert(music_list);
-    music_list = music_list.split("-");
+    //music_list = music_list.split("-");
     //alert(music_list[0]);
     //alert(music_list.length);
-    var music_lists = [];
+    //var music_lists = [];
 
-    for(var i=0;i<music_list.length;i++){
+    /*for(var i=0;i<music_list.length;i++){
       var arr = [];
       //alert(music_list[i]);
       var m = music_list[i].split(",");
@@ -106,7 +106,7 @@
       arr.push(m[2]);
       arr.push(m[3]);
       music_lists.push(arr);
-    }
+    }*/
 
     //alert(music_lists[0][0]);
 
@@ -217,16 +217,16 @@
    }
 
     function selectMusic0() {
-        var i = 0;
-        var name1 = document.getElementById("in1").value;
-		    name = name1.match(/(\S*)--/)[1];
+        var name = document.getElementById("in1").value;
+        var i = localStorage.getItem(name);
+		    //name = name1.match(/(\S*)--/)[1];
         //alert(name);
-        singer = name1.match(/--(\S*)/)[1];
+        //singer = name1.match(/--(\S*)/)[1];
         //alert(musics[1][0]);
         //alert(music_lists.length);
         //alert(music_lists[0][0]);
         //alert(music_lists[0][3]);
-        for(var j=0;j<music_lists.length;j++){
+        /*for(var j=0;j<music_lists.length;j++){
           if(name == music_lists[j][0] && singer == music_lists[j][2]){
             i = j+1;
             //alert(i);
@@ -235,12 +235,16 @@
             });
             show();
           }
-        }
+        }*/
         //alert(i);
+        demo.selectMusic({
+            other:i
+        });
+        show();
     }
 
     function selectMusic1() {
-        var i = 0;
+        /*var i = 0;
         var name1 = document.getElementById("in2").value;
 		    name = name1.match(/(\S*)--/)[1];
         //alert(name);
@@ -260,7 +264,13 @@
             show();
           }
         }
-        //alert(i);
+        //alert(i);*/
+        var name = document.getElementById("in2").value;
+        var i = localStorage.getItem(name);
+        demo.selectMusic({
+            other:i
+        });
+        show();
     }
 
     function selectMusic2() {
