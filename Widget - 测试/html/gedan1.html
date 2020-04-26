@@ -81,39 +81,13 @@
 <script type="text/javascript">
     //获取主页面搜索框传递来的数据
     var url = location.search;
-    //alert(url);
-    //var loc = url.substring(url.IndexOf('=')+1, url.length);
     var loc = url.substring(url.lastIndexOf('=')+1, url.length);
     var name_or_singer = unescape(loc); //
-    //alert(name_or_singer);
-    //var music_list = unescape(loc.match(/(\S*)--/)[1]);  //所有搜索过的歌的数组
-    //alert(music_list);
-    //music_list = music_list.split("-");
-    //alert(music_list[0]);
-    //alert(music_list.length);
-    //var music_lists = [];
 
-    /*for(var i=0;i<music_list.length;i++){
-      var arr = [];
-      //alert(music_list[i]);
-      var m = music_list[i].split(",");
-      //alert(m[0]);
-      //alert(music_list[i][2]);
-      //alert(music_list[i][4]);
-      //alert(music_list[i][6]);
-      arr.push(m[0]);
-      arr.push(m[1]);
-      arr.push(m[2]);
-      arr.push(m[3]);
-      music_lists.push(arr);
-    }*/
-
-    //alert(music_lists[0][0]);
 
     var demo;
     var inpArr = document.getElementsByTagName('input');
 
-    //var musics = [] //所有搜索过的音乐
 
     function search(){  //用来对div进行赋值
         var value=name_or_singer;
@@ -141,20 +115,6 @@
                   inpArr[i].value=gedan;
                   id = inpArr[i].id;
                   $("#"+id+"").show();
-
-                  //var arr = [];
-                  //var na = ret[i].name;
-                  //var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
-                  //var ot=i+1;
-                  //var si = ret[i].singer;
-                  //addMusic(na,url,si,ot);
-
-                  //var music = [];
-                  //music.push(na);
-                  //music.push(url);
-                  //music.push(si);
-                  //music.push(ot);
-                  //musics.push(music);
                 }
               }else{
                 alert("曲库中没有此歌曲");
@@ -164,8 +124,6 @@
         });
     }
 
-    //window.onload = search;
-    //根据歌手名搜索
     function search1(){
        var value = name_or_singer;
        var query = api.require('query');
@@ -196,69 +154,14 @@
         }
       });
     }
-    //window.onload = search1;
 
-
-    //添加音乐
-    function addMusic(na,fn,ser,oth) {
-       demo.addMusic({
-           data: {
-               name: na,
-               filename: fn,
-               singer: ser,
-               icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
-               other: oth,
-               fenxiangSum: 3,
-               downmusicSum: 33,
-               pinglunSum: 44,
-               background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
-           }
-       });
-   }
 
     function selectMusic0() {
         var name = document.getElementById("in1").value;
         //alert(name);
-        var i = localStorage.getItem(name);
-        //alert(i);
-		    //name = name1.match(/(\S*)--/)[1];
-        //alert(name);
-        //singer = name1.match(/--(\S*)/)[1];
-        //alert(musics[1][0]);
-        //alert(music_lists.length);
-        //alert(music_lists[0][0]);
-        //alert(music_lists[0][3]);
-        /*for(var j=0;j<music_lists.length;j++){
-          if(name == music_lists[j][0] && singer == music_lists[j][2]){
-            i = j+1;
-            //alert(i);
-            demo.selectMusic({
-                other:i
-            });
-            show();
-          }
-        }*/
-        //alert(i);
-        demo.selectMusic({
-            other:i
-        });
-        show();
-    }
-
-    function selectMusic1() {
-        /*var i = 0;
-        var name1 = document.getElementById("in2").value;
-		    name = name1.match(/(\S*)--/)[1];
-        //alert(name);
-        singer = name1.match(/--(\S*)/)[1];
-        //alert(musics[1][0]);
-        //alert(music_lists.length);
-        //alert(music_lists[1]);
-        //alert(music_lists[1][0]);
-        //alert(music_lists[1][2]);
-        for(var j=0;j<music_lists.length;j++){
-          if(name == music_lists[j][0] && singer == music_lists[j][2]){
-            i = j+1;
+        for(var i=1;i<=localStorage.length;i++){
+          //alert(localStorage.getItem(i));
+          if(name==localStorage.getItem(i)){
             //alert(i);
             demo.selectMusic({
                 other:i
@@ -266,14 +169,35 @@
             show();
           }
         }
-        //alert(i);*/
-        var name = document.getElementById("in2").value;
+        /*var i = localStorage.getItem(name);
+        alert(i);
+        demo.selectMusic({
+            other:i
+        });
+        show();*/
+    }
+
+    function selectMusic1() {
+      var name = document.getElementById("in2").value;
+      //alert(name);
+      for(var i=1;i<=localStorage.length;i++){
+        //alert(localStorage.getItem(i));
+        //alert(localStorage.getItem(i));
+        if(name==localStorage.getItem(i)){
+          //alert(i);
+          demo.selectMusic({
+              other:i
+          });
+          show();
+        }
+      }
+        /*var name = document.getElementById("in2").value;
         var i = localStorage.getItem(name);
         alert(i);
         demo.selectMusic({
             other:i
         });
-        show();
+        show();*/
     }
 
     function selectMusic2() {
@@ -331,8 +255,6 @@
         });
         show();
     }
-    //url = "http://music.163.com/song/media/outer/url?id="+ret[n].music_id+".mp3"
-    //var musics={'name':'ret[n]name','filename':'url','singer':'ret[n].singer','icon':'http://p1.music.126.net/6F8-Rp8MUvxzrpTjxJiA7A==/109951164764756625.jpg?param=130y130','other':n,fenxiangSum: 43,downmusicSum: 12,pinglunSum: 45,background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"}
 
     function netplay() {
         demo.playMusic({

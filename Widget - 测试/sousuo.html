@@ -23,7 +23,6 @@
             </div>
         </div>
         <button onclick="search()">搜索</button>  <!--更换的button-->
-        <button onclick="ceshi()">清除缓存</button>
         <!--<div class="button" tapmode onclick="search();search1();">搜索</div>-->
     </div>
 </body>
@@ -31,12 +30,11 @@
 <script type="text/javascript">
     //页面跳转
     //var musics= [];
-    function ceshi(){
-      localStorage.clear();
-    }
-    //localStorage.clear();
-    var ot= localStorage.length;
-    //alert(ot);
+
+    localStorage.clear();
+
+    var ot= localStorage.length; //加入歌曲的数目
+    //alert(ot)
 
     function search(){
       var value=document.getElementById('search-input').value;
@@ -62,27 +60,47 @@
               for(var i=0;i<ret.length;i++){
                 var na = ret[i].name;
                 var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
-                ot=ot+1;
-                alert(ot);
+
+                //alert(ot);
                 var si = ret[i].singer;
 
-                addMusic(na,url,si,ot);
+                //addMusic(na,url,si,ot+1);
                 var song = na+"--"+si;
                 //alert(song);
-                //alert(song);
-                localStorage.setItem(song,ot);
-                //var music = [];
-                //music.push(na);
-                //music.push(url);
-                //music.push(si);
-                //music.push(ot);
-                //musics.push(music);
-                //alert(musics);
+                var j = ot;
+                //alert(j);
+
+                var bool = 0;
+                for(var a=0;a<=j;a++){
+                  //alert(localStorage.getItem(a+1));
+                  if(song != localStorage.getItem(a+1)){
+                      bool = 1;
+                  }
+                  else{
+                    bool = 0;
+                    break;
+                  }
+                  /*if(song == localStorage.getItem(a+1) && song==localStorage.getItem(a+2)){
+                    break;
+                  }
+                  else
+                  {
+                    localStorage.setItem(ot+1,song);
+                    ot=ot+1;
+                    alert(ot);
+                    break;
+                  }*/
+                }
+                if(bool==1){
+                  localStorage.setItem(ot+1,song);
+                  ot=ot+1;
+                  //alert(ot);
+                }
               }
             }else{
               alert("曲库中没有此歌曲");
             }
-            //p = musics.join("-");
+            //p = loc;
             url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
             location.href=url;
           });
@@ -92,12 +110,7 @@
 
     function jump(){
       search();
-      //alert(musics);
-      /*alert(musics[0][0]);
-      alert(musics[0][2]);
-      alert(musics[0][4]);
-      alert(musics[0][6]);*/
-      //p = musics.join("-");
+
       url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
       location.href=url;
     }
