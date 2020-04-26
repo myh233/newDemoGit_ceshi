@@ -22,7 +22,7 @@
                 <i class="aui-iconfont aui-icon-close"></i>
             </div>
         </div>
-        <button onclick="search()">搜索</button>  <!--更换的button-->
+        <button onclick="jump()">搜索</button>  <!--更换的button-->
         <!--<div class="button" tapmode onclick="search();search1();">搜索</div>-->
     </div>
 </body>
@@ -61,10 +61,10 @@
                 //alert(url);
                 //alert(ot);
                 //alert(si);
-                addMusic(na,url,si,ot);
+                //addMusic(na,url,si,ot);
                 var song = na+"--"+si;
                 //alert(song);
-                localStorage.setItem("song",ot);
+                localStorage.setItem(song,ot);
                 //var music = [];
                 //music.push(na);
                 //music.push(url);
@@ -77,8 +77,8 @@
               alert("曲库中没有此歌曲");
             }
             //p = musics.join("-");
-            url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
-            location.href=url;
+            //url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
+            //location.href=url;
           });
         }
       });
@@ -91,8 +91,8 @@
       alert(musics[0][2]);
       alert(musics[0][4]);
       alert(musics[0][6]);*/
-      p = musics.join("-");
-      url = "./html/gedan1.html?name="+escape(p)+"--"+escape(document.getElementById('search-input').value);
+      //p = musics.join("-");
+      url = "./html/gedan1.html?name="+escape(document.getElementById('search-input').value);
       location.href=url;
     }
 

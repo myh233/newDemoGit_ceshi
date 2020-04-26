@@ -81,11 +81,11 @@
 <script type="text/javascript">
     //获取主页面搜索框传递来的数据
     var url = location.search;
-    //alert(url);
+    alert(url);
     //var loc = url.substring(url.IndexOf('=')+1, url.length);
-    var loc = url.split("=")[1];
-    var name_or_singer = unescape(loc.match(/--(\S*)/)[1]); //
-
+    var loc = url.substring(url.lastIndexOf('=')+1, url.length);
+    var name_or_singer = unescape(loc); //
+    //alert(name_or_singer);
     //var music_list = unescape(loc.match(/(\S*)--/)[1]);  //所有搜索过的歌的数组
     //alert(music_list);
     //music_list = music_list.split("-");
