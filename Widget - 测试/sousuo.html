@@ -30,6 +30,9 @@
 <script type="text/javascript">
     //页面跳转
     //var musics= [];
+    //localStorage.clear();
+    var ot= localStorage.length;
+    //alert(ot);
 
     function search(){
       var value=document.getElementById('search-input').value;
@@ -55,13 +58,10 @@
               for(var i=0;i<ret.length;i++){
                 var na = ret[i].name;
                 var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
-                var ot=i+1;
-                var si = ret[i].singer;
-                //alert(na);
-                //alert(url);
+                ot=ot+1;
                 //alert(ot);
-                //alert(si);
-                addMusic(na,url,si,ot);
+                var si = ret[i].singer;
+
                 var song = na+"--"+si;
                 //alert(song);
                 //alert(song);
