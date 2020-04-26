@@ -23,6 +23,7 @@
             </div>
         </div>
         <button onclick="search()">搜索</button>  <!--更换的button-->
+        <!--<button onclick="ceshi()">清除缓存</button>-->
         <!--<div class="button" tapmode onclick="search();search1();">搜索</div>-->
     </div>
 </body>
@@ -30,7 +31,10 @@
 <script type="text/javascript">
     //页面跳转
     //var musics= [];
-    //localStorage.clear();
+    function ceshi(){
+      localStorage.clear();
+    }
+    localStorage.clear();
     var ot= localStorage.length;
     //alert(ot);
 
@@ -59,9 +63,10 @@
                 var na = ret[i].name;
                 var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
                 ot=ot+1;
-                //alert(ot);
+                alert(ot);
                 var si = ret[i].singer;
 
+                addMusic(na,url,si,ot);
                 var song = na+"--"+si;
                 //alert(song);
                 //alert(song);
