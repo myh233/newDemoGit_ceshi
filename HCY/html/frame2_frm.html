@@ -1,0 +1,188 @@
+<div class="aui-searchbar" id="search">
+            <div class="aui-searchbar-input aui-border-radius">
+                <i class="aui-iconfont aui-icon-search"></i>
+                <input type="search" placeholder="音乐搜索" id="search-input">
+                <div class="aui-searchbar-clear-btn">
+                    <i class="aui-iconfont aui-icon-close"></i>
+                </div>
+            </div>
+            <button onclick="search()">搜索</button>
+        </div>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
+    <title>个性推荐</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+</head>
+<body>
+    <section class="aui-content">
+        <div class="aui-card-list aui-border-t aui-border-b">
+            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
+                <div class="aui-info-item aui-font-size-12">
+                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
+                    <span class="aui-margin-l-5">猜你喜欢</span>
+                </div>
+                <div class="aui-info-item">
+                    <i class="aui-iconfont aui-icon-more"></i>
+                </div>
+            </div>
+            <div class="aui-card-list-content">
+                <img src="../image/l1.png" />
+            </div>
+            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
+                根据你的口味推荐
+            </div>
+        </div>
+        <div class="aui-card-list aui-border-t aui-border-b" onclick="window.location.href='recommend1_frm.html'">
+            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
+                <div class="aui-info-item aui-font-size-12">
+                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
+                    <span class="aui-margin-l-5">古典推荐</span>
+                </div>
+                <div class="aui-info-item">
+                    <i class="aui-iconfont aui-icon-more"></i>
+                </div>
+            </div>
+            <div class="aui-card-list-content">
+                <img src="../image/l2.png" />
+            </div>
+            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
+                古典主义：来一杯高雅的香槟如何？
+            </div>
+        </div>
+        <div class="aui-card-list aui-border-t aui-border-b" onclick="window.location.href='recommend_frm.html'">
+            <div class="aui-info aui-padded-l-15 aui-padded-r-15">
+                <div class="aui-info-item aui-font-size-12">
+                    <img src="../image/demo1.png" style="width:1rem" class="aui-img-round" />
+                    <span class="aui-margin-l-5">轻音乐</span>
+                </div>
+                <div class="aui-info-item">
+                    <i class="aui-iconfont aui-icon-more"></i>
+                </div>
+            </div>
+            <div class="aui-card-list-content">
+                <img src="../image/l3.png" />
+            </div>
+            <div class="aui-card-list-header aui-padded-t-5 aui-padded-b-5">
+                诙谐小曲给你带来一天的好心情
+            </div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+    var loc=localStorage.getItem('userId');
+    var ot= localStorage.length; //加入歌曲的数目
+    function search(){
+      var value=document.getElementById('search-input').value;
+      var query=api.require('query');
+      var model=api.require('model');
+      model.config({
+        appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
+        appId: 'A6036872544676',
+        host: 'https://d.apicloud.com'
+      });
+      query.createQuery(function(ret,err){
+        if(ret && ret.qid){
+          query.whereLike({
+            qid:ret.qid,
+            value:value,
+            column:'name'
+          });
+          model.findAll({
+           class: 'music',
+           qid: ret.qid
+          },function(ret,err){
+            if(ret){
+              for(var i=0;i<ret.length;i++){
+                var na = ret[i].name;
+                var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
+                var si = ret[i].singer;
+
+                addMusic(na,url,si,ot+1);
+                var song = na+"--"+si;
+                var j = ot;
+
+                var bool = 0;
+                for(var a=0;a<=j;a++){
+                  if(song != localStorage.getItem(a+1)){
+                      bool = 1;
+                  }
+                  else{
+                    bool = 0;
+                    break;
+                  }
+                }
+                if(bool==1){
+                  localStorage.setItem(ot+1,song);
+                  ot=ot+1;
+                }
+              }
+            }else{
+              alert("曲库中没有此歌曲");
+            }
+            url = "gedan1.html?name="+escape(document.getElementById('search-input').value);
+            location.href=url;
+          });
+        }
+      });
+    }
+
+    function jump(){
+      search();
+
+      url = "gedan1.html?name="+escape(document.getElementById('search-input').value);
+      location.href=url;
+    }
+
+    //添加音乐
+    function addMusic(na,fn,ser,oth) {
+       demo.addMusic({
+           data: {
+               name: na,
+               filename: fn,
+               singer: ser,
+               icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+               other: oth,
+               fenxiangSum: 3,
+               downmusicSum: 33,
+               pinglunSum: 44,
+               background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+           }
+       });
+   }
+
+   function apiready() {
+        demo = api.require('uimusic');
+        demo.addEventListener({
+            name: "closeui"
+        }, function(ret, err) {
+            alert("closeui>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "pinglun"
+        }, function(ret, err) {
+            alert("pinglun>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "fenxiang"
+        }, function(ret, err) {
+            alert("fenxiang>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "downmusic"
+        }, function(ret, err) {
+            alert("downmusic>>addEventListener|" + JSON.stringify(ret));
+        });
+
+        demo.addEventListener({
+            name: "sharetop"
+        }, function(ret, err) {
+            alert("sharetop>>addEventListener|" + JSON.stringify(ret));
+        });
+    }
+</script>
+</html>
