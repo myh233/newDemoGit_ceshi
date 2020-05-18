@@ -82,7 +82,7 @@
 
 <body>
   <header class="aui-bar aui-bar-nav" id="aui-header">
-      <a class="aui-btn aui-pull-left" tapmode onclick="window.location.href='stop(),reloadPage(),frame1_frm.html'">
+      <a class="aui-btn aui-pull-left" tapmode onclick="window.location.href='stop(),frame1_frm.html'">
           <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div class="aui-title">新歌榜</div>
@@ -176,11 +176,12 @@
         <img id = "jiemian" src="../image/jie.png" onclick="show()">
       </div>
     </div>
+    <button onclick="reloadPage()">点击我</button>
 
 </body>
 <script>
     var demo;
-    
+
     function reloadPage(){
         location.reload();
     }
