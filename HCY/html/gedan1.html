@@ -169,12 +169,12 @@
        var value = name_or_singer;
        var query = api.require('query');
        var model = api.require('model');
-          model.config({
-           appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
-           appId: 'A6036872544676',
-           host: 'https://d.apicloud.com'
-          });
-          query.createQuery(function(ret,err){
+        model.config({
+         appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
+         appId: 'A6036872544676',
+         host: 'https://d.apicloud.com'
+        });
+        query.createQuery(function(ret,err){
         if(ret && ret.qid){
          query.whereLike({
            qid:ret.qid,
