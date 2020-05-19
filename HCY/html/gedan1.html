@@ -131,6 +131,7 @@
 
     var demo;
     var inpArr = document.getElementsByTagName('input');
+    var i = 0;
 
     function search(){  //用来对div进行赋值
         var value=name_or_singer;
@@ -153,7 +154,7 @@
              qid: ret.qid
             },function(ret,err){
               if(ret.length>0){
-                for(var i=0;i<ret.length;i++){
+                for(i;i<ret.length;i++){
                   gedan = ret[i].name+"--"+ret[i].singer;
                   inpArr[i].value=gedan;
                   id = inpArr[i].id;
@@ -186,7 +187,8 @@
           qid: ret.qid
          },function(ret,err){
            if(ret.length>0){
-             for(var i=0;i<ret.length;i++){
+             var j = i;
+             for(i;i<ret.length+j;i++){
                gedan = ret[i].name+"--"+ret[i].singer;
                inpArr[i].value=gedan;
                id = inpArr[i].id;
