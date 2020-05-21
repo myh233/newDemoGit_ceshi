@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>粤语热歌榜</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <style type="text/css">
+    /*.aui-list .aui-list-item-media {
+        width: 6rem;*/
+    }
+
+        html,body {
+            width:100%;
+            height: 100%;
+        }
+
+        body {
+            width:100%;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        .music_list {
+            font-size: 150%;
+            width:100%;
+        }
+		    .aui-list-item-title{
+      			font-size: 100%;
+      			border:none;
+      			background-color: white;
+		    }
+        /*上一曲*/
+        #previous{
+          width:40px;
+          height:40px;
+        }
+        /*播放暂停*/
+        #playstop{
+          width:36px;
+          height:36px;
+        }
+        /*下一曲*/
+        #next{
+          width:40px;
+          height:40px;
+        }
+        /*界面*/
+        #jiemian{
+          width:40px;
+          heigth:40px;
+        }
+
+        .foot{
+          width:100%;
+          height:45px;
+          position:fixed;
+          bottom:0;
+        }
+
+        #Ne{
+          float:right;
+          width:51px;
+          height:51px;
+        }
+
+        #Pl{
+          float:right;
+          width:51px;
+          height:51px;
+        }
+
+        #Pr{
+          float:right;
+          width:51px;
+          height:51px;
+		    }
+    </style>
+</head>
+
+<body>
+  <header class="aui-bar aui-bar-nav" id="aui-header">
+      <a class="aui-btn aui-pull-left" tapmode onclick="window.location.href='frame1_frm.html',stop()">
+          <span class="aui-iconfont aui-icon-left"></span>
+      </a>
+      <div class="aui-title">粤语热歌榜</div>
+  </header>
+    <div class = "music_list">
+      <!--歌单-->
+      <ul class="aui-list aui-list-noborder">
+          <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="65766" onclick="fun1(this.id);selectMusic1();" type="button" value="富士山下  --陈奕迅">
+            <button onclick="fun(this.id)" id="65766">收藏</button>
+		  </div>
+      </li>
+      <ul class="aui-list aui-list-noborder">
+          <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="308353" onclick="fun1(this.id);selectMusic2();" type="button" value="钟无艳 --谢安琪">
+          <button onclick="fun(this.id)" id="308353">收藏</button>
+		  </div>
+    </li>
+    <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="65923" onclick="fun1(this.id);selectMusic3();" type="button" value="人来人往(live)  --陈奕迅">
+          <button onclick="fun(this.id)" id="65923">收藏</button>
+		  </div>
+    </li>
+    <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="308299" onclick="fun1(this.id);selectMusic4();" type="button" value="喜帖街  --谢安琪">
+          <button onclick="fun(this.id)" id="308299">收藏</button>
+		  </div>
+    </li>
+    <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="308169" onclick="fun1(this.id);selectMusic5();" type="button" value="年度之歌   --谢安琪">
+          <button onclick="fun(this.id)" id="308169">收藏</button>
+		  </div>
+    </li>
+    <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="64634" onclick="fun1(this.id);selectMusic6();" type="button" value="一丝不挂  --陈奕迅">
+          <button onclick="fun(this.id)" id="64634">收藏</button>
+		  </div>
+    </li>
+    <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="26353080" onclick="fun1(this.id);selectMusic7();" type="button" value="蜚蜚  --陈僖仪">
+          <button onclick="fun(this.id)" id="26353080">收藏</button>
+		  </div>
+    </li>
+    <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="300136" onclick="fun1(this.id);selectMusic8();" type="button" value="暗涌  --王菲">
+          <button onclick="fun(this.id)" id="300136">收藏</button>
+		  </div>
+    </li>
+    <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="224086" onclick="fun1(this.id);selectMusic9();" type="button" value="电灯胆   --邓丽欣">
+          <button onclick="fun(this.id)" id="224086">收藏</button>
+		  </div>
+    </li>
+    <ul class="aui-list aui-list-noborder">
+        <li class="aui-list-item">
+          <div class="aui-list-item-inner">
+          <input class="aui-list-item-title" id="26467599" onclick="fun1(this.id);selectMusic10();" type="button" value="你太善良 --张智霖">
+          <button onclick="fun(this.id)" id="26467599">收藏</button>
+		  </div>
+      </li>
+		</div>
+
+    <!--页脚-->
+    <div class = "foot">
+      <div id="Ne">
+        <img id = "next" src="../image/xia.png" onclick="musicNext()">
+      </div>
+      <div id="Pl">
+        <img id= "playstop" src="../image/bofang.png" onclick="musicPlayPause()">
+      </div>
+      <div id="Pr">
+        <img id = "previous" src="../image/shang.png" onclick="musicPrevious()">
+      </div>
+      <div id="interface">
+        <img id = "jiemian" src="../image/jie.png" onclick="show()">
+      </div>
+    </div>
+
+</body>
+<script>
+    var demo;
+
+    /*function reloadPage(){
+        location.reload();
+    }*/
+
+    function stop(){
+        demo.stopMusic();
+    }
+
+    function getCurrentPlayer() {
+        demo.getCurrentPlayer(function(ret, err) {
+            alert("getCurrentPlayer|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic1() {
+        netplay();
+        demo.selectMusic({
+            other:1
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic2() {
+        netplay();
+        demo.selectMusic({
+            other:2
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic3() {
+        netplay();
+        demo.selectMusic({
+            other:3
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic4() {
+        netplay();
+        demo.selectMusic({
+            other:4
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic5() {
+        netplay();
+        demo.selectMusic({
+            other:5
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic6() {
+        netplay();
+        demo.selectMusic({
+            other:6
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic7() {
+        netplay();
+        demo.selectMusic({
+            other:7
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic8() {
+        netplay();
+        demo.selectMusic({
+            other:8
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic9() {
+        netplay();
+        demo.selectMusic({
+            other:9
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function selectMusic10() {
+        netplay();
+        demo.selectMusic({
+            other:10
+        }, function(ret, err) {
+            alert("selectMusic|" + JSON.stringify(ret));
+        });
+    }
+
+    function netplay() {
+        demo.playMusic({
+            musics: [{
+                name: "富士山下",
+                filename: "http://music.163.com/song/media/outer/url?id=65766.mp3",
+                singer: "陈奕迅",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 1,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            }, {
+                name: "钟无艳",
+                filename: "http://music.163.com/song/media/outer/url?id=308353.mp3",
+                singer: "谢安琪",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 2,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            },  {
+                name: "人来人往(live)",
+                filename: "http://music.163.com/song/media/outer/url?id=65923.mp3",
+                singer: "陈奕迅",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 3,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            },  {
+                name: "喜帖街",
+                filename: "http://music.163.com/song/media/outer/url?id=308299.mp3",
+                singer: "谢安琪",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 4,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            },  {
+                name: "年度之歌",
+                filename: "http://music.163.com/song/media/outer/url?id=308169.mp3",
+                singer: "谢安琪",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 5,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            },  {
+                name: "一丝不挂",
+                filename: "http://music.163.com/song/media/outer/url?id=64634.mp3",
+                singer: "陈奕迅",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 6,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            },  {
+                name: "蜚蜚",
+                filename: "http://music.163.com/song/media/outer/url?id=26353080.mp3",
+                singer: "陈僖仪",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 7,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            },  {
+                name: "暗涌",
+                filename: "http://music.163.com/song/media/outer/url?id=300136.mp3",
+                singer: "王菲",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 8,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            },  {
+                name: "电灯胆",
+                filename: "http://music.163.com/song/media/outer/url?id=224086.mp3",
+                singer: "邓丽欣",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 9,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            }, {
+                name: "你太善良",
+                filename: "http://music.163.com/song/media/outer/url?id=26467599.mp3",
+                singer: "张智霖",
+                icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
+                other: 10,
+                fenxiangSum: 43,
+                downmusicSum: 12,
+                pinglunSum: 45,
+                background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
+            }],
+            ttf: "widget://res/UKIJTor.ttf",
+            downmusicBtn: false,
+            fenxiangBtn: true,
+            pinglunBtn: true,
+            nameTextSize: 20,
+            singerTextSize: 16,
+            isShowUi: false
+        }, function(ret, err) {});
+    }
+
+    function show() {
+        demo.showUI();
+    }
+
+    function close() {
+        demo.closeUI();
+    }
+
+    function stop() {
+        demo.stopMusic();
+    }
+
+    function musicPrevious() {
+        netplay();
+        demo.musicPrevious();
+    }
+
+
+    function musicPlayPause() {
+        netplay();
+        demo.musicPlayPause();
+    }
+
+    function musicNext() {
+        netplay();
+        demo.musicNext();
+    }
+
+    function apiready() {
+        demo = api.require('uimusic');
+        demo.addEventListener({
+            name: "closeui"
+        }, function(ret, err) {
+            alert("closeui>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "pinglun"
+        }, function(ret, err) {
+            alert("pinglun>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "fenxiang"
+        }, function(ret, err) {
+            alert("fenxiang>>addEventListener|" + JSON.stringify(ret));
+        });
+        demo.addEventListener({
+            name: "downmusic"
+        }, function(ret, err) {
+            alert("downmusic>>addEventListener|" + JSON.stringify(ret));
+        });
+
+        demo.addEventListener({
+            name: "sharetop"
+        }, function(ret, err) {
+            alert("sharetop>>addEventListener|" + JSON.stringify(ret));
+        });
+    }
+</script>
+
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+// var url=location.search;
+// var loc=url.substring(url.lastIndexOf('=')+1,url.length);
+var loc=localStorage.getItem('userId');
+//插入-可行
+function fun(id){
+  var myid = id;
+  var model=api.require('model');
+  model.insert
+  model.insert({
+      class: 'like',
+      value: {userId:loc,music_id:myid}
+  },function(ret,err){
+    if( ret ){
+           alert( JSON.stringify( ret ) );
+      }else{
+           alert( JSON.stringify( err ) );
+      }
+  });
+
+}
+function fun1(id){
+  var myid = id;
+  var model=api.require('model');
+  model.insert
+  model.insert({
+      class: 'recent',
+      value: {userId:loc,music_id:myid}
+  },function(ret,err){
+    if( ret ){
+           alert( JSON.stringify( ret ) );
+      }else{
+           alert( JSON.stringify( err ) );
+      }
+  });
+
+}
+</script>
