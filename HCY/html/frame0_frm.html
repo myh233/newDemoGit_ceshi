@@ -76,7 +76,7 @@
     <ul class="aui-list aui-list-noborder">
       <li class="aui-list-item">
         <div class="aui-list-item-inner">
-          <input class="aui-list-item-title" id="6" type="button" onclick="selectMusic5()" style="display:none"/>
+          <input class="aui-list-item-title" id="in6" type="button" onclick="selectMusic5()" style="display:none"/>
         </div>
       </li>
     <ul class="aui-list aui-list-noborder">
@@ -134,7 +134,6 @@
          });
       query.createQuery(function(ret,err){
       if(ret && ret.qid){
-       //console.log(ret.qid)
          query.whereLike({
            qid:ret.qid,
            value:music_id,
@@ -267,13 +266,13 @@
     }
     function selectMusic10() {
         demo.selectMusic({
-            other:10
+            other:11
         });
         show();
     }
     function selectMusic11() {
         demo.selectMusic({
-            other:10
+            other:12
         });
         show();
     }
