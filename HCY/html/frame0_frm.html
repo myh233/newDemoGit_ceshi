@@ -123,7 +123,7 @@
     var demo;
     var j = 0;
 
-    function search1(music_id){
+    function search1(music_id){ //根据歌曲id搜索出其他信息，展示在界面上
       //var userId = "42";
       var query = api.require('query');
       var model = api.require('model');
@@ -145,7 +145,6 @@
          },function(ret,err){
              //alert(ret[0].name);
              if(ret.length>0){
-               for(var i=0;i<ret.length;i++){
                  gedan = ret[0].name+"--"+ret[0].singer;
                  inpArr[j].value = gedan;
                  id = inpArr[j].id;
@@ -159,7 +158,6 @@
                  var oth = j;
 
                  addMusic(na,url,ser,oth)
-               }
              }
              else{
                alert("失败");
@@ -169,7 +167,7 @@
      })
     }
 
-    function search(){
+    function search(){   //根据用户名搜索最近听歌的歌曲id
       //  var userId = "42";
        var loc=localStorage.getItem('userId');
        var query = api.require('query');
