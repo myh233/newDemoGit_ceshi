@@ -161,20 +161,20 @@
          },function(ret,err){
              //alert(ret.length);
              if(ret.length>0){
-               for(var i=0;i<ret.length;i++){
-                 gedan = ret[i].name+"--"+ret[i].singer;
-                 inpArr[j].value = gedan;
-                 id = inpArr[j].id;
+               //for(var i=0;i<ret.length;i++){
+               gedan = ret[0].name+"--"+ret[0].singer;
+               inpArr[j].value = gedan;
+               id = inpArr[j].id;
 
-                 j = j+1;
+               j = j+1;
 
-                 $("#"+id+"").show();
-                 var na = ret[i].name;
-                 var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
-                 var ser = ret[i].singer;
-                 var oth = j;
-                 addMusic(na,url,ser,oth);
-               }
+               $("#"+id+"").show();
+               var na = ret[i].name;
+               var url = "http://music.163.com/song/media/outer/url?id="+ret[i].music_id+".mp3";
+               var ser = ret[i].singer;
+               var oth = j;
+               addMusic(na,url,ser,oth);
+               //}
              }
              else{
                alert("先多听一些歌曲吧");
@@ -207,11 +207,9 @@
         },function(ret,err){
             //alert(ret.length);
             if(ret.length>0){
-              for(var i=0;i<ret.length;i++){
                 var singer = ret[i].singer;
-                alert(singer);
+                //alert(singer);
                 search2(singer);
-              }
             }else{
                alert("先多听一些歌曲吧");
             }
@@ -226,6 +224,7 @@
          for(var i=0; i<inpArr.length; i++){
              inpArr[i].value='';
          }
+         alert("请先登录");
        }
        else{
          var query = api.require('query');
@@ -237,7 +236,6 @@
             });
           query.createQuery(function(ret,err){
           if(ret && ret.qid){
-           //console.log(ret.qid)
            query.whereLike({
              qid:ret.qid,
              value:userId,
@@ -252,7 +250,7 @@
                for(var i=0;i<ret.length;i++){
                  var music_id = ret[i].music_id;
                  search1(music_id);
-                 alert(music_id);
+                 //alert(music_id);
                }
              }else{
                 alert("先多听一些歌曲吧");
