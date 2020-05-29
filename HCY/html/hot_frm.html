@@ -180,7 +180,9 @@
 </body>
 <script>
     var demo;
-
+    apiready=function(){
+      netplay();
+    }
     /*function reloadPage(){
         location.reload();
     }*/
@@ -196,92 +198,72 @@
     }
 
     function selectMusic1() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:1
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic2() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:2
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic3() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:3
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic4() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:4
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic5() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:5
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic6() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:6
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic7() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:7
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic8() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:8
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic9() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:9
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
     function selectMusic10() {
-        netplay();
+        //netplay();
         demo.selectMusic({
             other:10
-        }, function(ret, err) {
-            alert("selectMusic|" + JSON.stringify(ret));
         });
     }
 
@@ -328,9 +310,9 @@
                 pinglunSum: 45,
                 background: "http://7xwc0t.com1.z0.glb.clouddn.com/apicloud/3a3d926564ab4c5b2292744d5ffb0ec6.jpg"
             },  {
-                name: "223's",
-                filename: "http://music.163.com/song/media/outer/url?id=1382666583.mp3",
-                singer: "YNW Melly / 9lokknine",
+                name: "像风一样",
+                filename: "http://music.163.com/song/media/outer/url?id=516657051.mp3",
+                singer: "薛之谦",
                 icon: "http://p1.music.126.net/CjOOps_aDbNVz0JpWyfB5Q==/109951163027939634.jpg?param=130y130",
                 other: 5,
                 fenxiangSum: 43,
@@ -395,7 +377,7 @@
             nameTextSize: 20,
             singerTextSize: 16,
             isShowUi: false
-        }, function(ret, err) {});
+        });
     }
 
     function show() {
@@ -411,18 +393,18 @@
     }
 
     function musicPrevious() {
-        netplay();
+        //netplay();
         demo.musicPrevious();
     }
 
 
     function musicPlayPause() {
-        netplay();
+        //netplay();
         demo.musicPlayPause();
     }
 
     function musicNext() {
-        netplay();
+        //netplay();
         demo.musicNext();
     }
 
@@ -467,33 +449,28 @@ var loc=localStorage.getItem('userId');
 function fun(id){
   var myid = id;
   var model=api.require('model');
-  model.insert
+  model.config({
+    appId : 'A6036872544676',
+    appKey : '075A132B-2B11-505D-F01E-FA8B51604C1B',
+    host : 'https://d.apicloud.com'
+  });
   model.insert({
       class: 'like',
       value: {userId:loc,music_id:myid}
-  },function(ret,err){
-    if( ret ){
-           alert( JSON.stringify( ret ) );
-      }else{
-           alert( JSON.stringify( err ) );
-      }
   });
 
 }
 function fun1(id){
   var myid = id;
   var model=api.require('model');
-  model.insert
+  model.config({
+    appId : 'A6036872544676',
+    appKey : '075A132B-2B11-505D-F01E-FA8B51604C1B',
+    host : 'https://d.apicloud.com'
+  });
   model.insert({
       class: 'recent',
       value: {userId:loc,music_id:myid}
-  },function(ret,err){
-    if( ret ){
-           alert( JSON.stringify( ret ) );
-      }else{
-           alert( JSON.stringify( err ) );
-      }
   });
-
 }
 </script>
