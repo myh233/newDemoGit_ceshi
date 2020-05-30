@@ -444,6 +444,10 @@ function fun(id){
   model.insert({
       class: 'like',
       value: {userId:loc,music_id:myid}
+  },function(ret,err){
+      if(ret){
+        alert("收藏成功");
+      }
   });
 
 }
