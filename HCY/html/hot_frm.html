@@ -180,9 +180,6 @@
 </body>
 <script>
     var demo;
-    apiready=function(){
-      netplay();
-    }
     /*function reloadPage(){
         location.reload();
     }*/
@@ -198,70 +195,70 @@
     }
 
     function selectMusic1() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:1
         });
     }
 
     function selectMusic2() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:2
         });
     }
 
     function selectMusic3() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:3
         });
     }
 
     function selectMusic4() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:4
         });
     }
 
     function selectMusic5() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:5
         });
     }
 
     function selectMusic6() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:6
         });
     }
 
     function selectMusic7() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:7
         });
     }
 
     function selectMusic8() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:8
         });
     }
 
     function selectMusic9() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:9
         });
     }
 
     function selectMusic10() {
-        //netplay();
+        netplay();
         demo.selectMusic({
             other:10
         });
@@ -415,24 +412,16 @@
         });
         demo.addEventListener({
             name: "pinglun"
-        }, function(ret, err) {
-            alert("pinglun>>addEventListener|" + JSON.stringify(ret));
         });
         demo.addEventListener({
             name: "fenxiang"
-        }, function(ret, err) {
-            alert("fenxiang>>addEventListener|" + JSON.stringify(ret));
         });
         demo.addEventListener({
             name: "downmusic"
-        }, function(ret, err) {
-            alert("downmusic>>addEventListener|" + JSON.stringify(ret));
         });
 
         demo.addEventListener({
             name: "sharetop"
-        }, function(ret, err) {
-            alert("sharetop>>addEventListener|" + JSON.stringify(ret));
         });
     }
 </script>
