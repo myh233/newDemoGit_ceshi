@@ -36,7 +36,7 @@
 </head>
 <body>
   <header class="aui-bar aui-bar-nav" id="aui-header">
-      <a class="aui-btn aui-pull-left" tapmode onclick="window.location.href='frame2_frm.html'">
+      <a class="aui-btn aui-pull-left" tapmode onclick="window.location.href='frame2_frm.html',stop()">
           <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div class="aui-title">返回</div>
@@ -128,10 +128,17 @@
     var loc = url.substring(url.lastIndexOf('=')+1, url.length);
     var name_or_singer = unescape(loc);
 
+    apiready=function(){
+      changei();
+    }
 
     var demo;
     var inpArr = document.getElementsByTagName('input');
     var i = 0;
+
+    function stop(){
+        demo.stopMusic();
+    }
 
     function changei(){//改变i的值
       $.ajax({
