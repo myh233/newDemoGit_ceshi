@@ -131,7 +131,7 @@
         demo.stopMusic();
     }
 
-    function search1(music_id){
+    function search1(music_id){//根据歌曲id在歌曲库中查找歌曲的其他信息，并展示出来
       var query = api.require('query');
       var model = api.require('model');
       model.config({
@@ -158,12 +158,12 @@
                id = inpArr[j].id;
                j = j+1;
 
-               $("#"+id+"").show();
-               var na = ret[0].name;
+               $("#"+id+"").show(); //将隐藏的input展示出来
+               var na = ret[0].name; //歌曲名称
                var url = "http://music.163.com/song/media/outer/url?id="+ret[0].music_id+".mp3";
-               var ser = ret[0].singer;
-               var oth = j;
-               addMusic(na,url,ser,oth);
+               var ser = ret[0].singer; //歌手名
+               var oth = j;  //定义selectMusic中的other,便于实现点击那首放那首歌的功能
+               addMusic(na,url,ser,oth);  //添加歌曲
              }
              else{
                alert("失败");
@@ -173,7 +173,7 @@
      })
     }
 
-    function search(){
+    function search(){  //根据用户id查找收藏的歌曲id
       //  var userId = "42";//localStorage.getItem("userId")"";
        var loc=localStorage.getItem('userId');
        var query = api.require('query');
