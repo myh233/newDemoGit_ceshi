@@ -207,8 +207,7 @@
         },function(ret,err){
             //alert(ret.length);
             if(ret.length>0){
-                var singer = ret[i].singer;
-                //alert(singer);
+                var singer = ret[0].singer;
                 search2(singer);
             }else{
                alert("先多听一些歌曲吧");
@@ -372,7 +371,6 @@
         demo.addEventListener({
             name: "downmusic"
         });
-
         demo.addEventListener({
             name: "sharetop"
         });

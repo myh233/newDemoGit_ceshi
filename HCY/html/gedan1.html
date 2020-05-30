@@ -45,7 +45,7 @@
       <ul class="aui-list aui-list-noborder">
         <li class="aui-list-item">
           <div class="aui-list-item-inner">
-            <input class="aui-list-item-title" id="in1" type="button" onclick="selectMusic0()">
+            <input class="aui-list-item-title" id="in1" type="button" onclick="selectMusic0()" style="display:none"/>
           </div>
         </li>
       </ul>
@@ -128,9 +128,6 @@
     var loc = url.substring(url.lastIndexOf('=')+1, url.length);
     var name_or_singer = unescape(loc);
 
-    apiready=function(){
-
-    }
 
     var demo;
     var inpArr = document.getElementsByTagName('input');
@@ -138,7 +135,6 @@
 
     function stop(){
         demo.stopMusic();
-        changei();
     }
 
     function changei(){//改变i的值
