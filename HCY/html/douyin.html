@@ -467,7 +467,11 @@ var loc=localStorage.getItem('userId');
 function fun(id){
   var myid = id;
   var model=api.require('model');
-  model.insert
+  model.config({
+    appId : 'A6036872544676',
+    appKey : '075A132B-2B11-505D-F01E-FA8B51604C1B',
+    host : 'https://d.apicloud.com'
+  });
   model.insert({
       class: 'like',
       value: {userId:loc,music_id:myid}
@@ -483,7 +487,11 @@ function fun(id){
 function fun1(id){
   var myid = id;
   var model=api.require('model');
-  model.insert
+  model.config({
+    appId : 'A6036872544676',
+    appKey : '075A132B-2B11-505D-F01E-FA8B51604C1B',
+    host : 'https://d.apicloud.com'
+  });
   model.insert({
       class: 'recent',
       value: {userId:loc,music_id:myid}

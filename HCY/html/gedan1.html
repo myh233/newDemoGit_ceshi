@@ -133,6 +133,15 @@
     var inpArr = document.getElementsByTagName('input');
     var i = 0;
 
+    function changei(){//改变i的值
+      $.ajax({
+            async: false,
+            success: function() {
+                i = 0;
+            }
+        })
+    }
+
     function search(){  //用来对div进行赋值
         var value=name_or_singer;
         var query=api.require('query');

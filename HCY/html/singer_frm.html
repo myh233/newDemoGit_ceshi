@@ -36,15 +36,19 @@ function insert(){
   var loc=localStorage.getItem('userId');
   var singer_name=document.getElementById('name').value;
   var model=api.require('model');
-  model.insert
+  model.config({
+    appId : 'A6036872544676',
+    appKey : '075A132B-2B11-505D-F01E-FA8B51604C1B',
+    host : 'https://d.apicloud.com'
+  });
   model.insert({
       class: 'like_singer',
       value: {userId:loc,singer_name:singer_name}
   },function(ret,err){
     if( ret ){
-           alert( JSON.stringify( ret ) );
+           alert("添加成功");
       }else{
-           alert( JSON.stringify( err ) );
+           alert("添加失败");
       }
   });
 
