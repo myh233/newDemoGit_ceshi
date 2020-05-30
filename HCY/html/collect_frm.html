@@ -127,22 +127,14 @@
     var demo;
     var j = 0;
 
-    function jump(){
-      var loc=localStorage.getItem('userId');
-      url = "frame3_frm.html?name="+loc;
-        location.href=url;
-    }
-
     function search1(music_id){
-      //var userId = "42";
-      // alert(music_id);
       var query = api.require('query');
       var model = api.require('model');
-         model.config({
-          appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
-          appId: 'A6036872544676',
-          host: 'https://d.apicloud.com'
-         });
+      model.config({
+       appKey: '075A132B-2B11-505D-F01E-FA8B51604C1B',
+       appId: 'A6036872544676',
+       host: 'https://d.apicloud.com'
+      });
       query.createQuery(function(ret,err){
       if(ret && ret.qid){
        //console.log(ret.qid)
@@ -157,20 +149,17 @@
          },function(ret,err){
              //alert(ret[0].name);
              if(ret.length>0){
-               for(var i=0;i<ret.length;i++){
-                 gedan = ret[0].name+"--"+ret[0].singer;
-                 inpArr[j].value = gedan;
-                 id = inpArr[j].id;
+               gedan = ret[0].name+"--"+ret[0].singer;
+               inpArr[j].value = gedan;
+               id = inpArr[j].id;
+               j = j+1;
 
-                 j = j+1;
-
-                 $("#"+id+"").show();
-                 var na = ret[0].name;
-                 var url = "http://music.163.com/song/media/outer/url?id="+ret[0].music_id+".mp3";
-                 var ser = ret[0].singer;
-                 var oth = j;
-                    addMusic(na,url,ser,oth);
-               }
+               $("#"+id+"").show();
+               var na = ret[0].name;
+               var url = "http://music.163.com/song/media/outer/url?id="+ret[0].music_id+".mp3";
+               var ser = ret[0].singer;
+               var oth = j;
+               addMusic(na,url,ser,oth);
              }
              else{
                alert("失败");
@@ -182,7 +171,7 @@
 
     function search(){
       //  var userId = "42";//localStorage.getItem("userId")"";
-        var loc=localStorage.getItem('userId');
+       var loc=localStorage.getItem('userId');
        var query = api.require('query');
        var model = api.require('model');
           model.config({
@@ -277,13 +266,13 @@
     }
     function selectMusic10() {
         demo.selectMusic({
-            other:10
+            other:11
         });
         show();
     }
     function selectMusic11() {
         demo.selectMusic({
-            other:10
+            other:12
         });
         show();
     }
@@ -315,24 +304,16 @@
         });
         demo.addEventListener({
             name: "pinglun"
-        }, function(ret, err) {
-            alert("pinglun>>addEventListener|" + JSON.stringify(ret));
         });
         demo.addEventListener({
             name: "fenxiang"
-        }, function(ret, err) {
-            alert("fenxiang>>addEventListener|" + JSON.stringify(ret));
         });
         demo.addEventListener({
             name: "downmusic"
-        }, function(ret, err) {
-            alert("downmusic>>addEventListener|" + JSON.stringify(ret));
         });
 
         demo.addEventListener({
             name: "sharetop"
-        }, function(ret, err) {
-            alert("sharetop>>addEventListener|" + JSON.stringify(ret));
         });
     }
   </script>
